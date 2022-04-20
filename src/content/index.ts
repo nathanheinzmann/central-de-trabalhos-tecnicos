@@ -4,6 +4,6 @@ const contents = {
   dashboard,
 };
 
-const getContent = (contentType: any) => contents[contentType];
+const getContent = (contentType: string) => contents[contentType as keyof typeof contents];
 
 export default getContent;

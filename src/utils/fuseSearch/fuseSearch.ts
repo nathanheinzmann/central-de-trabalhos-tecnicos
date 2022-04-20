@@ -1,8 +1,13 @@
-import { UserInputData } from '@src/contexts';
+import { UserInputDataProps } from '@src/contexts';
 import Fuse from 'fuse.js';
 
+type Props = {
+  context: UserInputDataProps;
+  articles: any;
+  setAllArticles: (articles: any) => void;
+};
 
-const fuseSearch = async (articles, setAllArticles, context: UserInputData) => {
+const fuseSearch = async ({ articles, setAllArticles, context }: Props) => {
   let filteredArticles = articles;
   const { inputLimits, inputTitle, inputStudent } = context;
 
@@ -34,7 +39,7 @@ const fuseSearch = async (articles, setAllArticles, context: UserInputData) => {
 
   //search by years limits
   filteredArticles = filteredArticles.filter(
-    (article) => article.year >= inputLimits[0] && article.year <= inputLimits[1]
+    (article: any) => article.year >= inputLimits[0] && article.year <= inputLimits[1]
   );
 
   setAllArticles(filteredArticles);

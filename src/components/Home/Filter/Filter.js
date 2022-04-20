@@ -5,7 +5,7 @@ import * as S from './styles';
 
 const Filter = ({ filterContent }) => {
   const [open, setOpen] = useState(false);
-  const {clearAllFilters} = useContext(UserInputContext);
+  const { clearAllFilters } = useContext(UserInputContext);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -23,7 +23,7 @@ const Filter = ({ filterContent }) => {
   return (
     <div>
       <S.Button style={{ backgroundColor: 'transparent' }} onClick={handleClickOpen}>
-        <img src="assets/images/filters.webp" alt="" srcset="" />
+        <img src="assets/images/filters.webp" />
       </S.Button>
 
       <Modal

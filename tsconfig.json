@@ -29,7 +29,9 @@
     "./next-env.d.ts",
     "./src/types/*.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "src/pages/_document.js",
+    "src/pages/_app.js"
   ],
   "exclude": [
     "node_modules"

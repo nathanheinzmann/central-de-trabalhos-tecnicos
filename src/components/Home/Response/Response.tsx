@@ -13,14 +13,14 @@ const Response = ({ articles, dashboardContent }: ResponseTypes) => {
   const notFoundImageSrc = "assets/images/dog-search.png";
 
   useEffect(() => {
-    fuseSearch(articles, setAllArticles, context);
+    fuseSearch({ articles, setAllArticles, context });
   }, [context]);
 
   const resultsFoundText = allArticles.length > 1 ?
-        `${allArticles.length} resultados encontrados` :
-        !allArticles.length ?
-          'nenhum resultado encontrado' :
-          '1 resultado encontrado';
+    `${allArticles.length} resultados encontrados` :
+    !allArticles.length ?
+      'nenhum resultado encontrado' :
+      '1 resultado encontrado';
 
   const notFound = (
     <>

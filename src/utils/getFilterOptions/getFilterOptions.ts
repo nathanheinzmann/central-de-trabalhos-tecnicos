@@ -11,11 +11,11 @@ const getFilterOptions = async () => {
   const selectOptions = [
     {
       label: 'Curso',
-      options: json.map((item) => item.acf.course),
+      options: json.map((item: any) => item.acf.course),
     },
     {
       label: 'Professor',
-      options: json.map((item) => item.acf.teacher)
+      options: json.map((item: any) => item.acf.teacher)
     }
   ];
 

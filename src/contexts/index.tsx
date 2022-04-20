@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 
-export type UserInputData = {
+export type UserInputDataProps = {
   inputLimits: number[];
   inputStudent: string;
   inputTitle: string;
@@ -11,15 +11,15 @@ export type UserInputData = {
   clearAllFilters(): void;
 }
 
-const UserInputContext = createContext<UserInputData>({} as UserInputData);
+const UserInputContext = createContext<UserInputDataProps>({} as UserInputDataProps);
 
 export const UserInputProvider: React.FC = ({ children }) => {
   const [inputTitle, setInputTitle] = useState<string>("");
   const [inputStudent, setInputStudent] = useState<string>("");
   const [inputLimits, setInputLimits] = useState<number[]>([1995, new Date().getFullYear()]);
-  
+
   const handleSearch = () => null;
-  
+
   const clearAllFilters = () => {
     setInputLimits([1995, new Date().getFullYear()]);
     setInputStudent("");

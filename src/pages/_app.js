@@ -1,4 +1,3 @@
-import { AppProps } from 'next/app';
 import Menu from '@src/components/Common';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '@src/themes/global';
@@ -7,7 +6,7 @@ import React from 'react';
 import vanilla from '@src/themes/theme';
 import { UserInputProvider } from '@src/contexts';
 
-const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={vanilla}>
       <UserInputProvider>

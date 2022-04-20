@@ -1,4 +1,4 @@
-const formatData = (apiArticle) => {
+const formatData = (apiArticle: any) => {
   const {
     id,
     acf,
