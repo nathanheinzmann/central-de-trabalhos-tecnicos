@@ -1,45 +1,45 @@
-import { UserInputDataProps } from '@src/contexts';
+import { InputsState } from '@src/store/modules/inputs/inputs.types';
 import Fuse from 'fuse.js';
 
 type Props = {
-  context: UserInputDataProps;
+  inputs: InputsState;
   articles: any;
   setAllArticles: (articles: any) => void;
 };
 
-const fuseSearch = async ({ articles, setAllArticles, context }: Props) => {
+const fuseSearch = async ({ articles, setAllArticles, inputs }: Props) => {
   let filteredArticles = articles;
-  const { inputLimits, inputTitle, inputStudent } = context;
+  const { limits, title, student } = inputs;
 
   //search by title
-  if (inputTitle) {
+  if (title) {
     const fuse = new Fuse(articles, {
       threshold: 0,
       includeScore: true,
       ignoreLocation: true,
       keys: ['title'],
     });
-    const fuseArticles = fuse.search(inputTitle);
+    const fuseArticles = fuse.search(title);
     const allFuseArticles = fuseArticles.map(({ item }) => item);
     filteredArticles = allFuseArticles;
   }
 
   //search by student
-  if (inputStudent) {
+  if (student) {
     const fuse = new Fuse(filteredArticles, {
       threshold: 0,
       includeScore: true,
       ignoreLocation: true,
       keys: ['student'],
     });
-    const fuseArticles = fuse.search(inputStudent);
+    const fuseArticles = fuse.search(student);
     const allFuseArticles = fuseArticles.map(({ item }) => item);
     filteredArticles = allFuseArticles;
   }
 
   //search by years limits
   filteredArticles = filteredArticles.filter(
-    (article: any) => article.year >= inputLimits[0] && article.year <= inputLimits[1]
+    (article: any) => article.year >= limits[0] && article.year <= limits[1]
   );
 
   setAllArticles(filteredArticles);

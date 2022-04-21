@@ -1,23 +1,24 @@
-import Menu from '@src/components/Common';
+import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '@src/themes/global';
 import Head from 'next/head';
+import Menu from '@src/components/Common';
 import React from 'react';
 import vanilla from '@src/themes/theme';
-import { UserInputProvider } from '@src/contexts';
+import store from '@src/store';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <ThemeProvider theme={vanilla}>
-      <UserInputProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={vanilla}>
         <Head>
           <title key="title">CTT</title>
         </Head>
         <Menu />
         <Component {...pageProps} />
         <GlobalStyle />
-      </UserInputProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Provider>
   )
 }
 

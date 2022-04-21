@@ -1,20 +1,23 @@
 import Link from 'next/link';
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './Response.style';
 import { ResponseTypes } from './Response.types';
 import { fuseSearch } from '@src/utils';
-import UserInputContext from '@src/contexts';
+import { InputsState } from '@src/store/modules/inputs/inputs.types';
+import { useSelector } from 'react-redux';
+import { AppState } from '@src/store/store.types';
 
 const Response = ({ articles, dashboardContent }: ResponseTypes) => {
   const { notFoundContent } = dashboardContent;
   const { title: notFoundTitle, options } = notFoundContent;
   const [allArticles, setAllArticles] = useState<ResponseTypes['articles']>(articles)
-  const context = useContext(UserInputContext);
   const notFoundImageSrc = "assets/images/dog-search.png";
+  const inputs: InputsState = useSelector(({ inputs }: AppState) => inputs);
+
 
   useEffect(() => {
-    fuseSearch({ articles, setAllArticles, context });
-  }, [context]);
+    fuseSearch({ articles, setAllArticles, inputs });
+  }, [inputs]);
 
   const resultsFoundText = allArticles.length > 1 ?
     `${allArticles.length} resultados encontrados` :
