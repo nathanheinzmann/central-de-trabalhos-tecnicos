@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Field = styled.div<Types.FieldProps>`
-  ${({ disabled, theme, isOpen }) => css`
+  ${({ theme, isOpen }) => css`
     align-items: center;
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.mineShaft};
@@ -21,10 +21,10 @@ export const Field = styled.div<Types.FieldProps>`
     position: relative;
 
     ${isOpen
-      ? css`
+    ? css`
           background-color: ${theme.colors.silver};
         `
-      : css`
+    : css`
           background-color: transparent;
         `}
   `}
@@ -60,10 +60,10 @@ export const Options = styled.ul<Types.OptionsProps>`
     z-index: 50;
 
     ${show
-      ? css`
+    ? css`
           opacity: 1;
         `
-      : css`
+    : css`
           opacity: 0;
           pointer-events: none;
         `}

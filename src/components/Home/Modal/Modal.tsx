@@ -1,16 +1,11 @@
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import * as S from './Modal.styles';
+import { inputsActions } from '@src/store/modules/inputs';
+import { Select, Input, RangeSlider } from '@src/components/Home';
+import { useDispatch } from 'react-redux';
+import * as S from './Modal.style';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import React, { useState } from 'react';
-import Input from '../Input';
-import RangeSlider from '../RangeSlider';
-import { useDispatch } from 'react-redux';
-import { inputsActions } from '@src/store/modules/inputs';
-import Select from '../Select';
+import React from 'react';
 
 const Modal = ({
   filterContent,
@@ -44,8 +39,6 @@ const Modal = ({
               type={'student'}
             />
             <Select options={selectOptions[0].options} />
-          </S.WrapperInfoDialog>
-          <S.WrapperInfoDialog>
             <FormControl>
               <RangeSlider />
             </FormControl>

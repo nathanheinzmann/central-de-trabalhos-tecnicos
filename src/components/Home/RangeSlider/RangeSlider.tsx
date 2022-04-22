@@ -26,6 +26,6 @@ const RangeSlider = () => {
       <p>entre {inputs.limits[0]} e {inputs.limits[1]}</p>
     </Box>
   );
-}
+};
 
 export default RangeSlider;

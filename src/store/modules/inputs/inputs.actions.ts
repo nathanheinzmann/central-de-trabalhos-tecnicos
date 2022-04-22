@@ -1,6 +1,6 @@
-import { InputsActionTypes } from './inputs.types';
+import { InputsActionTypes, InputsTypes } from './inputs.types';
 
-const addFilter = (inputUser: string | number[], type: string) => {
+const addFilter = (inputUser: string | number[], type: InputsTypes) => {
   return {
     type: InputsActionTypes.ADD_FILTER,
     payload: {

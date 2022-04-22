@@ -1,13 +1,13 @@
 import { AppState } from '@src/store/store.types';
 import { inputsActions } from '@src/store/modules/inputs';
-import { InputsState } from '@src/store/modules/inputs/inputs.types';
+import { InputsState, InputsTypes } from '@src/store/modules/inputs/inputs.types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import * as S from './Input.style';
 
 type Props = {
   label: string;
-  type: string;
+  type: InputsTypes;
 };
 
 const Input = ({ type, label }: Props) => {
@@ -31,7 +31,7 @@ const Input = ({ type, label }: Props) => {
 
   useEffect(() => {
     setFilled(inputs[type as keyof typeof inputs].length > 0);
-  }, [inputs[type as keyof typeof inputs]]);
+  }, [inputs[type as keyof InputsState]]);
 
   return (
     <S.Wrapper>
@@ -40,7 +40,7 @@ const Input = ({ type, label }: Props) => {
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
         onChange={({ target }) => handleAddFilter(target.value)}
-        value={String(inputs[type as keyof InputsState])}
+        value={String(inputs[type])}
       />
     </S.Wrapper>
   );

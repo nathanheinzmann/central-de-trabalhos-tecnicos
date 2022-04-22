@@ -20,9 +20,9 @@ const getFilterOptions = async () => {
   ];
 
   return {
-    selectOptions,
+    selectOptions: selectOptions.map((filterOption: any) => ({ options: [''].concat(filterOption.options.filter((item: any) => item)) })),
     labels,
   };
-}
+};
 
 export default getFilterOptions;

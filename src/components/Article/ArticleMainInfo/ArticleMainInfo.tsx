@@ -1,14 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
-import {
-  AuthorName,
-  Button,
-  Container,
-  Modal,
-  PDF,
-  SideBox,
-  TeacherName,
-  Title
-} from './ArticleMainInfo.style';
+import * as S from './ArticleMainInfo.style';
 import { ArticleProps } from './ArticleMainInfo.types';
 
 const ArticleMainInfo = ({ article }: ArticleProps) => {
@@ -29,21 +20,21 @@ const ArticleMainInfo = ({ article }: ArticleProps) => {
   }, [handleOutsideClick]);
 
   return (
-    <Container>
-      <Title>{article.title}</Title>
-      <SideBox>
-        <AuthorName>{article.student}</AuthorName>
-        <TeacherName>Prof. {article.teacher}</TeacherName>
+    <S.Container>
+      <S.Title>{article.title}</S.Title>
+      <S.SideBox>
+        <S.AuthorName>{article.student}</S.AuthorName>
+        <S.TeacherName>Prof. {article.teacher}</S.TeacherName>
         <p>{article.year}</p>
-        <Button onClick={() => setIsModalOpen(!isModalOpen)}>ver pdf</Button>
-        <Modal
+        <S.Button onClick={() => setIsModalOpen(!isModalOpen)}>ver pdf</S.Button>
+        <S.Modal
           isModalOpen={isModalOpen}
           ref={modalRef}
         >
-          <PDF src={article.file} />
-        </Modal>
-      </SideBox>
-    </Container>
+          <S.PDF src={article.file} />
+        </S.Modal>
+      </S.SideBox>
+    </S.Container>
   );
 };
 

@@ -6,7 +6,13 @@ const Select = ({ defaultOption = 0, disabled = false, onChange, options = [] }:
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selected, setSelected] = useState<Selected | null>(null);
-  console.log(selected);
+
+  useEffect(() => {
+    if (options.length > 0) {
+      const clamped = Math.min(Math.max(defaultOption, 0), options.length - 1);
+      setSelected({ value: options[clamped], callOnChange: false });
+    }
+  }, [defaultOption, options]);
 
   useEffect(() => {
     if (!selected && options.length > 0) {
@@ -22,15 +28,18 @@ const Select = ({ defaultOption = 0, disabled = false, onChange, options = [] }:
     setIsOpen(!isOpen);
   }, [disabled, isOpen]);
 
-  const onOptionClick = (option: string) => {
-    // Prevent updates when option is the current selection
-    if (selected?.value === option) {
+  const onOptionClick = useCallback(
+    (option: string) => {
+      // Prevent updates when option is the current selection
+      if (selected?.value === option) {
+        setIsOpen(false);
+        return;
+      }
+      setSelected({ value: option, callOnChange: true });
       setIsOpen(false);
-      return;
-    }
-    setSelected({ value: option, callOnChange: true });
-    setIsOpen(false);
-  };
+    },
+    [selected],
+  );
 
   useEffect(() => {
     if (selected && onChange && selected.callOnChange) {
@@ -38,11 +47,14 @@ const Select = ({ defaultOption = 0, disabled = false, onChange, options = [] }:
     }
   }, [onChange, selected]);
 
-  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isOpen && wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
-      setIsOpen(false);
-    }
-  };
+  const onMouseDown = useCallback(
+    (event: any) => {
+      if (isOpen && wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    },
+    [isOpen],
+  );
 
   useEffect(() => {
     window.addEventListener('mousedown', onMouseDown);

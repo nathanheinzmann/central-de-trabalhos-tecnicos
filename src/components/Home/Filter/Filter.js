@@ -1,5 +1,5 @@
+import { Modal } from '@src/components/Home';
 import React, { useState } from 'react';
-import Modal from '../Modal';
 import * as S from './styles';
 
 const Filter = ({ filterContent }) => {

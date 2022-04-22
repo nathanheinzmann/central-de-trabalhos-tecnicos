@@ -3,11 +3,13 @@ export enum InputsActionTypes {
   CLEAR_FILTER = 'CLEAR_FILTER',
 }
 
+export type InputsTypes = keyof InputsState;
+
 export type InputsAction = {
   type: InputsActionTypes,
   payload: {
     inputUser: string | number[],
-    type: string,
+    type: InputsTypes,
   }
 }
 
