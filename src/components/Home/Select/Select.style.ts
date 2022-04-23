@@ -1,17 +1,33 @@
 import styled, { css } from 'styled-components';
 import * as Types from './Select.types';
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex: 1;
-  position: relative;
+export const Wrapper = styled.div<Types.OptionsProps>`
+  ${({ label, show, theme }) => label && css`
+    display: flex;
+    flex: 1;
+    position: relative;
+    text-align: center;
+    &:after {
+      content: '${label}';
+      background-color: ${theme.colors.white};
+      color: ${show ? theme.colors.denim : theme.colors.mineShaft};
+      font-size: ${theme.font.sizes.sm};
+      left: 10px;
+      padding: 0px 5px;
+      top: -7px;
+      pointer-events: none;
+      position: absolute;
+      transition: transform 200ms ease-in-out, color 200ms ease-in-out;
+      height: 24px;
+    }
+  `}
 `;
 
-export const Field = styled.div<Types.FieldProps>`
-  ${({ theme, isOpen }) => css`
+export const Field = styled.div`
+  ${({ theme }) => css`
     align-items: center;
     background-color: ${theme.colors.white};
-    border: 1px solid ${theme.colors.mineShaft};
+    border: 1px solid ${theme.colors.spunPearl};
     cursor: pointer;
     display: flex;
     flex: 1;
@@ -19,20 +35,30 @@ export const Field = styled.div<Types.FieldProps>`
     min-height: 48px;
     padding: 14px 8px;
     position: relative;
+  `}
+`;
 
-    ${isOpen
-    ? css`
-          background-color: ${theme.colors.silver};
-        `
-    : css`
-          background-color: transparent;
-        `}
+export const TopLabel = styled.label`
+  ${({ theme }) => css`
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.mineShaft};
+    font-size: ${theme.font.sizes.sm};
+    left: 10px;
+    padding: 0px 5px;
+    top: 16px;
+    pointer-events: none;
+    position: absolute;
+    transition: transform 200ms ease-in-out, color 200ms ease-in-out;
+
+    &.selected {
+      color: ${theme.colors.denim};
+    }
   `}
 `;
 
 export const Label = styled.p`
   ${({ theme }) => css`
-    color: ${theme.colors.denim};
+    color: ${theme.colors.mineShaft};
     font-size: ${theme.font.sizes.sm};
   `}
 `;
@@ -48,25 +74,27 @@ export const IconAdapter = styled.div`
 export const Options = styled.ul<Types.OptionsProps>`
   ${({ theme, show }) => css`
     background-color: ${theme.colors.white};
-    border-bottom: 1px solid ${theme.colors.mineShaft};
-    border-left: 1px solid ${theme.colors.mineShaft};
-    border-right: 1px solid ${theme.colors.mineShaft};
+    border-bottom: 1px solid ${theme.colors.spunPearl};
+    border-left: 1px solid ${theme.colors.spunPearl};
+    border-right: 1px solid ${theme.colors.spunPearl};
     left: 0px;
     list-style: none;
     position: absolute;
     right: 0px;
     top: calc(100% - 1px);
     transition: opacity 200ms ease-in-out;
-    z-index: 50;
+    z-index: 100;
 
     ${show
-    ? css`
-          opacity: 1;
-        `
-    : css`
-          opacity: 0;
-          pointer-events: none;
-        `}
+      ? css`
+      opacity: 1;
+      visibility: visible;
+    `
+      : css`
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    `}
   `}
 `;
 
@@ -79,7 +107,7 @@ export const Option = styled.li`
     padding: 15px 8px;
 
     &:hover {
-      background-color: ${theme.colors.mineShaft};
+      background-color: ${theme.colors.silver};
     }
   `}
 `;

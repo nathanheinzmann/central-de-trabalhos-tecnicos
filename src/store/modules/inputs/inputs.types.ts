@@ -1,6 +1,7 @@
 export enum InputsActionTypes {
   ADD_FILTER = 'ADD_FILTER',
   CLEAR_FILTER = 'CLEAR_FILTER',
+  REMOVE_FILTER = 'REMOVE_FILTER',
 }
 
 export type InputsTypes = keyof InputsState;

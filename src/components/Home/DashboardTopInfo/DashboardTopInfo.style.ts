@@ -67,3 +67,8 @@ export const MainInput = styled.input`
     }
   `}
 `;
+
+export const Tags = styled.div`
+  display: flex;
+  margin-top: 20px;
+`;

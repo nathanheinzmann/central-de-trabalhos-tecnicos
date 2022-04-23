@@ -19,7 +19,7 @@ const MyApp = ({ Component, pageProps }) => {
         <GlobalStyle />
       </ThemeProvider>
     </Provider>
-  )
-}
+  );
+};
 
-export default MyApp
+export default MyApp;

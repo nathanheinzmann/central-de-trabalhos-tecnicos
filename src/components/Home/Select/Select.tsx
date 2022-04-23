@@ -1,25 +1,36 @@
+import { inputsActions } from '@src/store/modules/inputs';
+import { InputsTypes } from '@src/store/modules/inputs/inputs.types';
+import { AppState } from '@src/store/store.types';
+import { addEllipsis } from '@src/utils';
 import { useState, useCallback, useEffect, useRef } from 'react';
-import * as Style from './Select.style';
+import { useDispatch, useSelector } from 'react-redux';
+import * as S from './Select.style';
 import { SelectProps, Selected } from './Select.types';
 
-const Select = ({ defaultOption = 0, disabled = false, onChange, options = [] }: SelectProps) => {
+const Select = ({
+  disabled = false,
+  onChange,
+  options = [],
+  label = 'label',
+  type,
+}: SelectProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch();
+  const inputs = useSelector((state: AppState) => state.inputs);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selected, setSelected] = useState<Selected | null>(null);
 
   useEffect(() => {
     if (options.length > 0) {
-      const clamped = Math.min(Math.max(defaultOption, 0), options.length - 1);
-      setSelected({ value: options[clamped], callOnChange: false });
+      setSelected({ value: String(inputs[type as InputsTypes]), callOnChange: false });
     }
-  }, [defaultOption, options]);
+  }, [options, inputs, type]);
 
   useEffect(() => {
     if (!selected && options.length > 0) {
-      const clamped = Math.min(Math.max(defaultOption, 0), options.length - 1);
-      setSelected({ value: options[clamped], callOnChange: false });
+      setSelected({ value: String(inputs[type as InputsTypes]), callOnChange: false });
     }
-  }, [defaultOption, options, selected]);
+  }, [options, selected, inputs, type]);
 
   const onSelectClick = useCallback(() => {
     if (disabled) {
@@ -36,9 +47,10 @@ const Select = ({ defaultOption = 0, disabled = false, onChange, options = [] }:
         return;
       }
       setSelected({ value: option, callOnChange: true });
+      dispatch(inputsActions.addFilter(option, type));
       setIsOpen(false);
     },
-    [selected],
+    [selected, dispatch, type],
   );
 
   useEffect(() => {
@@ -64,20 +76,20 @@ const Select = ({ defaultOption = 0, disabled = false, onChange, options = [] }:
   }, [onMouseDown]);
 
   const optionsMap = options.map((option) => (
-    <Style.Option key={option} onClick={() => onOptionClick(option)}>
-      <Style.OptionLabel>{option}</Style.OptionLabel>
-    </Style.Option>
+    <S.Option key={option} onClick={() => onOptionClick(option)}>
+      <S.OptionLabel>{option}</S.OptionLabel>
+    </S.Option>
   ));
 
   return (
-    <Style.Wrapper data-testid="select" ref={wrapperRef}>
-      <Style.Field data-testid="select-field" isOpen={isOpen} onClick={onSelectClick} disabled={disabled}>
-        <Style.Label title={selected?.value}>{selected && selected ? selected.value : ''}</Style.Label>
-      </Style.Field>
-      <Style.Options data-testid="select-options" show={!!isOpen}>
+    <S.Wrapper data-testid="select" ref={wrapperRef} label={label} show={!!isOpen}>
+      <S.Field data-testid="select-field" onClick={onSelectClick}>
+        <S.Label>{selected && addEllipsis(selected.value)}</S.Label>
+      </S.Field>
+      <S.Options data-testid="select-options" show={!!isOpen}>
         {optionsMap}
-      </Style.Options>
-    </Style.Wrapper>
+      </S.Options>
+    </S.Wrapper>
   );
 };
 

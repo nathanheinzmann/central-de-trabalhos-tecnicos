@@ -28,8 +28,13 @@ export const Button = styled.button`
   `};
 `;
 
+export const Wrapper = styled.div`
+  padding: 30px;
+`;
+
 export const WrapperInfoDialog = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
+  padding-bottom: 20px;
 `;

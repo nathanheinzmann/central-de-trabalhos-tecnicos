@@ -1,9 +1,9 @@
-import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { inputsActions } from '@src/store/modules/inputs';
 import { InputsState } from '@src/store/modules/inputs/inputs.types';
 import { AppState } from '@src/store/store.types';
 import { useDispatch, useSelector } from 'react-redux';
+import * as S from './RangeSlider.style';
 
 const currentYear = new Date().getFullYear();
 
@@ -16,7 +16,7 @@ const RangeSlider = () => {
   };
 
   return (
-    <Box sx={{ width: 300 }}>
+    <S.Wrapper>
       <Slider
         value={inputs.limits}
         onChange={(e, newValue) => handleAddFilter(newValue as number[])}
@@ -24,7 +24,7 @@ const RangeSlider = () => {
         max={currentYear}
       />
       <p>entre {inputs.limits[0]} e {inputs.limits[1]}</p>
-    </Box>
+    </S.Wrapper>
   );
 };
 

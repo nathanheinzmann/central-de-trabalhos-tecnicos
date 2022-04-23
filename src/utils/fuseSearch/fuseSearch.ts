@@ -9,7 +9,13 @@ type Props = {
 
 const fuseSearch = async ({ articles, setAllArticles, inputs }: Props) => {
   let filteredArticles = articles;
-  const { limits, title, student } = inputs;
+  const {
+    course,
+    limits,
+    student,
+    teacher,
+    title,
+  } = inputs;
 
   //search by title
   if (title) {
@@ -22,7 +28,7 @@ const fuseSearch = async ({ articles, setAllArticles, inputs }: Props) => {
     const fuseArticles = fuse.search(title);
     const allFuseArticles = fuseArticles.map(({ item }) => item);
     filteredArticles = allFuseArticles;
-  }
+  };
 
   //search by student
   if (student) {
@@ -35,7 +41,21 @@ const fuseSearch = async ({ articles, setAllArticles, inputs }: Props) => {
     const fuseArticles = fuse.search(student);
     const allFuseArticles = fuseArticles.map(({ item }) => item);
     filteredArticles = allFuseArticles;
-  }
+  };
+
+  //search by course
+  if (course !== 'TODOS') {
+    filteredArticles = filteredArticles.filter(
+      (article: any) => article.course === course
+    );
+  };
+
+  //search by teacher
+  if (teacher !== 'TODOS') {
+    filteredArticles = filteredArticles.filter(
+      (article: any) => article.teacher === teacher
+    );
+  };
 
   //search by years limits
   filteredArticles = filteredArticles.filter(

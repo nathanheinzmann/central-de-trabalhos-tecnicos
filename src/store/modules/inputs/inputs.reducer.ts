@@ -1,10 +1,10 @@
-import { InputsAction, InputsActionTypes, InputsState } from './inputs.types';
+import { InputsAction, InputsActionTypes, InputsState, InputsTypes } from './inputs.types';
 
 const initialState: InputsState = {
   title: '',
   student: '',
-  teacher: '',
-  course: '',
+  teacher: 'TODOS',
+  course: 'TODOS',
   limits: [1995, new Date().getFullYear()],
 };
 
@@ -14,7 +14,14 @@ const InputsReducer = (state = initialState, action: InputsAction) => {
       const { inputUser, type } = action.payload;
       return {
         ...state,
-        [type as keyof typeof inputUser]: inputUser,
+        [type as InputsTypes]: inputUser,
+      };
+    }
+    case InputsActionTypes.REMOVE_FILTER: {
+      const { type } = action.payload;
+      return {
+        ...state,
+        [type as InputsTypes]: initialState[type],
       };
     }
     case InputsActionTypes.CLEAR_FILTER: {

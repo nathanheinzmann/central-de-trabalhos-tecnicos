@@ -10,14 +10,14 @@ import { AppState } from '@src/store/store.types';
 const Response = ({ articles, dashboardContent }: ResponseTypes) => {
   const { notFoundContent } = dashboardContent;
   const { title: notFoundTitle, options } = notFoundContent;
-  const [allArticles, setAllArticles] = useState<ResponseTypes['articles']>(articles)
+  const [allArticles, setAllArticles] = useState<ResponseTypes['articles']>(articles);
   const notFoundImageSrc = "assets/images/dog-search.png";
   const inputs: InputsState = useSelector(({ inputs }: AppState) => inputs);
 
 
   useEffect(() => {
     fuseSearch({ articles, setAllArticles, inputs });
-  }, [inputs]);
+  }, [inputs, articles]);
 
   const resultsFoundText = allArticles.length > 1 ?
     `${allArticles.length} resultados encontrados` :
@@ -49,7 +49,7 @@ const Response = ({ articles, dashboardContent }: ResponseTypes) => {
       infos,
     }) => {
       return (
-        <Link href="/[id]" as={`/${id}`} key={id}>
+        <Link passHref href="/[id]" as={`/${id}`} key={id}>
           <S.ResponseWrapper>
             <S.TitleName>
               <S.ArticleTitle>{title}</S.ArticleTitle>
@@ -64,7 +64,7 @@ const Response = ({ articles, dashboardContent }: ResponseTypes) => {
             </S.Infos>
           </S.ResponseWrapper>
         </Link>
-      )
+      );
     }) : notFound;
 
   return (
@@ -77,6 +77,6 @@ const Response = ({ articles, dashboardContent }: ResponseTypes) => {
       {mapResponse}
     </S.Container>
   );
-}
+};
 
 export default Response;

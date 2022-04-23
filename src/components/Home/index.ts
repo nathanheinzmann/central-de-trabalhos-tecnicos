@@ -5,3 +5,4 @@ export { default as Modal } from './Modal';
 export { default as RangeSlider } from './RangeSlider';
 export { default as Response } from './Response';
 export { default as Select } from './Select';
+export { default as Tag } from './Tag';

@@ -3,8 +3,6 @@ import { Select, Input, RangeSlider } from '@src/components/Home';
 import { useDispatch } from 'react-redux';
 import * as S from './Modal.style';
 import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import FormControl from '@material-ui/core/FormControl';
 import React from 'react';
 
 const Modal = ({
@@ -19,10 +17,14 @@ const Modal = ({
     setOpen(false);
   };
 
-  const handleCancel = () => {
+  const handleClearFilter = () => {
     dispatch(inputsActions.clearFilter());
-    setOpen(false);
   };
+
+  const mapSelectOptions = selectOptions.map(({ options, label, type }: any) => (
+    <Select key={label} label={label} options={options} type={type} />
+  ));
+
 
   return (
     <Dialog
@@ -31,28 +33,25 @@ const Modal = ({
       open={open}
       onClose={handleClose}
     >
-      <DialogContent>
-        <div>
-          <S.WrapperInfoDialog>
-            <Input
-              label={'Nome do Autor'}
-              type={'student'}
-            />
-            <Select options={selectOptions[0].options} />
-            <FormControl>
-              <RangeSlider />
-            </FormControl>
-          </S.WrapperInfoDialog>
-          <S.Buttons>
-            <S.Button onClick={handleCancel}>
-              Cancel
-            </S.Button>
-            <S.Button onClick={handleClose}>
-              Ok
-            </S.Button>
-          </S.Buttons>
-        </div>
-      </DialogContent>
+      <S.Wrapper>
+
+        <S.WrapperInfoDialog>
+          <Input
+            label={'Nome do Autor'}
+            type={'student'}
+          />
+          {mapSelectOptions}
+        </S.WrapperInfoDialog>
+        <RangeSlider />
+        <S.Buttons>
+          <S.Button onClick={handleClose}>
+            Fechar
+          </S.Button>
+          <S.Button onClick={handleClearFilter}>
+            Limpar Filtros
+          </S.Button>
+        </S.Buttons>
+      </S.Wrapper>
     </Dialog >
   );
 };

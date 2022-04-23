@@ -16,9 +16,19 @@ const clearFilter = () => {
   };
 };
 
+const removeFilter = (type: InputsTypes) => {
+  return {
+    type: InputsActionTypes.REMOVE_FILTER,
+    payload: {
+      type,
+    },
+  };
+};
+
 const productActions = {
   addFilter,
   clearFilter,
+  removeFilter,
 };
 
 export default productActions;

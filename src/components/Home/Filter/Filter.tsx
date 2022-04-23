@@ -1,8 +1,8 @@
 import { Modal } from '@src/components/Home';
 import React, { useState } from 'react';
-import * as S from './styles';
+import * as S from './Filter.style';
 
-const Filter = ({ filterContent }) => {
+const Filter = ({ filterContent }: any) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -12,7 +12,7 @@ const Filter = ({ filterContent }) => {
   return (
     <div>
       <S.Button style={{ backgroundColor: 'transparent' }} onClick={handleClickOpen}>
-        <img src="assets/images/filters.webp" />
+        <img alt="filtros" src="assets/images/filters.webp" />
       </S.Button>
 
       <Modal

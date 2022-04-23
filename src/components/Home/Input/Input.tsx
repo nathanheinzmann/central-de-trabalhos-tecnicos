@@ -31,7 +31,7 @@ const Input = ({ type, label }: Props) => {
 
   useEffect(() => {
     setFilled(inputs[type as keyof typeof inputs].length > 0);
-  }, [inputs[type as keyof InputsState]]);
+  }, [inputs, type]);
 
   return (
     <S.Wrapper>
@@ -44,6 +44,6 @@ const Input = ({ type, label }: Props) => {
       />
     </S.Wrapper>
   );
-}
+};
 
 export default Input;
