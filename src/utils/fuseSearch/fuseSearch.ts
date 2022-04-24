@@ -61,7 +61,7 @@ const fuseSearch = async ({ articles, setAllArticles, inputs }: Props) => {
   //search by workType
   if (workType !== 'TODOS') {
     filteredArticles = filteredArticles.filter(
-      (article: any) => article.type === workType
+      (article: any) => article.workType === workType
     );
   };
 
