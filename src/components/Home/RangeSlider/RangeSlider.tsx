@@ -1,9 +1,9 @@
 import Slider from '@mui/material/Slider';
+import { useDispatch, useSelector } from 'react-redux';
+import * as S from './RangeSlider.style';
 import { inputsActions } from '@src/store/modules/inputs';
 import { InputsState } from '@src/store/modules/inputs/inputs.types';
 import { AppState } from '@src/store/store.types';
-import { useDispatch, useSelector } from 'react-redux';
-import * as S from './RangeSlider.style';
 
 const currentYear = new Date().getFullYear();
 

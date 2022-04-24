@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import * as S from './Response.style';
 import { ResponseTypes } from './Response.types';
 import { fuseSearch } from '@src/utils';
 import { InputsState } from '@src/store/modules/inputs/inputs.types';
-import { useSelector } from 'react-redux';
 import { AppState } from '@src/store/store.types';
 
 const Response = ({ articles, dashboardContent }: ResponseTypes) => {

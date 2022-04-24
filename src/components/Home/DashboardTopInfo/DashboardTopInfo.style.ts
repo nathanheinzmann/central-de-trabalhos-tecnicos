@@ -1,5 +1,5 @@
-import { DefaultContainer } from '@src/themes/common';
 import styled, { css } from 'styled-components';
+import { DefaultContainer } from '@src/themes/common';
 
 export const Container = styled(DefaultContainer)`
   ${({ theme }) => css`

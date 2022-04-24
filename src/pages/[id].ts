@@ -1,5 +1,5 @@
-import Article from '@src/templates/Article';
 import { GetStaticProps } from 'next';
+import Article from '@src/templates/Article';
 
 export const getStaticProps: GetStaticProps = async (context: any) => {
   const response = await fetch(`https://ctt-next-ts.tk/wp-json/acf/v3/academic-works/${context.params.id}`);

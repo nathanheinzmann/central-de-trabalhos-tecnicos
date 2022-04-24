@@ -1,5 +1,5 @@
-import { DefaultSection } from '@src/themes/common';
 import styled, { css } from 'styled-components';
+import { DefaultSection } from '@src/themes/common';
 
 export const Container = styled(DefaultSection)`
   ${({ theme }) => css`

@@ -1,18 +1,36 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "no-console": "warn",
-    "@next/next/no-img-element": "off",
-    "indent": [
+    "import/no-cycle": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/order": "error",
+    "no-tabs": "off",
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react/forbid-prop-types": [
       1,
-      2,
       {
-        "SwitchCase": 1
+        "forbid": [
+          "any",
+          "array"
+        ]
       }
     ],
-    "semi": [
-      1,
-      "always"
-    ]
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "no-underscore-dangle": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "react/prop-types": "off"
   }
 }

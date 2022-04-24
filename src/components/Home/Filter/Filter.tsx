@@ -1,6 +1,6 @@
-import { Modal } from '@src/components/Home';
 import React, { useState } from 'react';
 import * as S from './Filter.style';
+import { Modal } from '@src/components/Home';
 
 const Filter = ({ filterContent }: any) => {
   const [open, setOpen] = useState(false);

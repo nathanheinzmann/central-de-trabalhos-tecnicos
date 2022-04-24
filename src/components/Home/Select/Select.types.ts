@@ -11,7 +11,6 @@ export type SelectProps = {
   type: keyof InputsState;
   onChange?: (value: string) => void;
   options?: Array<string>;
-  label?: string;
 };
 
 export type FieldProps = {

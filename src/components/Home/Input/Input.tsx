@@ -1,16 +1,16 @@
-import { AppState } from '@src/store/store.types';
-import { inputsActions } from '@src/store/modules/inputs';
-import { InputsState, InputsTypes } from '@src/store/modules/inputs/inputs.types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import * as S from './Input.style';
+import { AppState } from '@src/store/store.types';
+import { inputsActions } from '@src/store/modules/inputs';
+import { InputsState, InputsTypes } from '@src/store/modules/inputs/inputs.types';
+import { translate } from '@src/utils';
 
 type Props = {
-  label: string;
   type: InputsTypes;
-};
+}
 
-const Input = ({ type, label }: Props) => {
+const Input = ({ type }: Props) => {
   const dispatch = useDispatch();
   const [selected, setSelected] = useState(false);
   const [filled, setFilled] = useState(false);
@@ -35,7 +35,7 @@ const Input = ({ type, label }: Props) => {
 
   return (
     <S.Wrapper>
-      <S.Label className={`${selected || filled ? 'out' : 'in'}${selected ? ' selected' : ''}`}>{label}</S.Label>
+      <S.Label className={`${selected || filled ? 'out' : 'in'}${selected ? ' selected' : ''}`}>{translate(type)}</S.Label>
       <S.Input
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}

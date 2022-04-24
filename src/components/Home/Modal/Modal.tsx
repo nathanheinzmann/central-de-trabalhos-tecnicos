@@ -1,9 +1,8 @@
+import { useDispatch } from 'react-redux';
+import React, { useCallback, useEffect, useRef } from 'react';
+import * as S from './Modal.style';
 import { inputsActions } from '@src/store/modules/inputs';
 import { Select, Input, RangeSlider } from '@src/components/Home';
-import { useDispatch } from 'react-redux';
-import * as S from './Modal.style';
-import Dialog from '@material-ui/core/Dialog';
-import React from 'react';
 
 const Modal = ({
   filterContent,
@@ -12,6 +11,7 @@ const Modal = ({
 }: any) => {
   const dispatch = useDispatch();
   const { selectOptions } = filterContent;
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const handleClose = () => {
     setOpen(false);
@@ -21,25 +21,31 @@ const Modal = ({
     dispatch(inputsActions.clearFilter());
   };
 
-  const mapSelectOptions = selectOptions.map(({ options, label, type }: any) => (
-    <Select key={label} label={label} options={options} type={type} />
+  const handleOutsideClick = useCallback(
+    (e: any) => {
+      if (open && modalRef.current && !modalRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    },
+    [open, setOpen],
+  );
+
+  useEffect(() => {
+    window.addEventListener('click', handleOutsideClick);
+    return () => {
+      window.removeEventListener('click', handleOutsideClick);
+    };
+  }, [handleOutsideClick]);
+
+  const mapSelectOptions = selectOptions.map(({ options, type }: any) => (
+    <Select key={type} options={options} type={type} />
   ));
 
-
   return (
-    <Dialog
-      disableBackdropClick
-      disableEscapeKeyDown
-      open={open}
-      onClose={handleClose}
-    >
-      <S.Wrapper>
-
+    <S.Modal open={open}>
+      <S.Wrapper ref={modalRef}>
         <S.WrapperInfoDialog>
-          <Input
-            label={'Nome do Autor'}
-            type={'student'}
-          />
+          <Input type={'student'} />
           {mapSelectOptions}
         </S.WrapperInfoDialog>
         <RangeSlider />
@@ -52,7 +58,7 @@ const Modal = ({
           </S.Button>
         </S.Buttons>
       </S.Wrapper>
-    </Dialog >
+    </S.Modal >
   );
 };
 

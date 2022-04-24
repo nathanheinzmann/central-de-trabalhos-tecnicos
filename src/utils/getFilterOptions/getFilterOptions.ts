@@ -4,12 +4,10 @@ const getFilterOptions = async () => {
 
   const selectOptions = [
     {
-      label: 'Curso',
       type: 'course',
       options: json.map((item: any) => item.acf.course),
     },
     {
-      label: 'Professor',
       type: 'teacher',
       options: json.map((item: any) => item.acf.teacher)
     }
@@ -17,8 +15,8 @@ const getFilterOptions = async () => {
 
   return {
     selectOptions: selectOptions.map(
-      ({ type, options, label }) => ({
-        type, label, options: ['TODOS'].concat(options.filter((item: any) => item))
+      ({ type, options }) => ({
+        type, options: ['TODOS'].concat(options.filter((item: any) => item))
       })
     ),
   };

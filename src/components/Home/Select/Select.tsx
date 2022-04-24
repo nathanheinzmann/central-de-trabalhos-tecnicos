@@ -1,17 +1,16 @@
-import { inputsActions } from '@src/store/modules/inputs';
-import { InputsTypes } from '@src/store/modules/inputs/inputs.types';
-import { AppState } from '@src/store/store.types';
-import { addEllipsis } from '@src/utils';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './Select.style';
 import { SelectProps, Selected } from './Select.types';
+import { inputsActions } from '@src/store/modules/inputs';
+import { InputsTypes } from '@src/store/modules/inputs/inputs.types';
+import { AppState } from '@src/store/store.types';
+import { addEllipsis, translate } from '@src/utils';
 
 const Select = ({
   disabled = false,
   onChange,
   options = [],
-  label = 'label',
   type,
 }: SelectProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -82,7 +81,7 @@ const Select = ({
   ));
 
   return (
-    <S.Wrapper data-testid="select" ref={wrapperRef} label={label} show={!!isOpen}>
+    <S.Wrapper data-testid="select" ref={wrapperRef} label={translate(type)} show={!!isOpen}>
       <S.Field data-testid="select-field" onClick={onSelectClick}>
         <S.Label>{selected && addEllipsis(selected.value)}</S.Label>
       </S.Field>

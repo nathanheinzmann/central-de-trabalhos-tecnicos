@@ -1,8 +1,9 @@
 import React from 'react';
-import * as S from './Tag.style';
 import { useDispatch } from 'react-redux';
-import { inputsActions } from '@src/store/modules/inputs';
+import * as S from './Tag.style';
 import { TagProps } from './Tag.types';
+import { inputsActions } from '@src/store/modules/inputs';
+import { translate } from '@src/utils';
 
 const Tag = ({ value, type }: TagProps) => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const Tag = ({ value, type }: TagProps) => {
   };
 
   return (
-    <S.Button onClick={handleRemoveFilter}>{type}: {value}</S.Button>
+    <S.Button onClick={handleRemoveFilter}>{translate(type)}: {value}</S.Button>
   );
 };
 
