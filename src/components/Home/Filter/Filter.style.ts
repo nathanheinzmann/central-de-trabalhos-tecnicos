@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -14,6 +14,13 @@ export const Button = styled.button`
 `;
 
 export const Image = styled.img`
-  padding: 0 16px 0 0;
-  height: 28px;
+  ${({ theme }) => css`
+    padding: 0 24px 0 0;
+    height: 28px;
+
+    @media (max-width: ${theme.breakpoints.md}) {
+      height: 20px;
+      padding: 0 16px 0 0;
+    }
+  `}
 `;

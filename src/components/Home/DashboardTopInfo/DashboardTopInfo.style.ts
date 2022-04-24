@@ -24,9 +24,9 @@ export const Title = styled.h1`
       margin-top: 40px;
     }
 
-    @media (max-width: ${theme.breakpoints.xs}) {
-      font-size: ${theme.font.sizes.xxl};
-      line-height: ${theme.font.heights.xxl};
+    @media (max-width: ${theme.breakpoints.md}) {
+      font-size: ${theme.font.sizes.xl};
+      line-height: ${theme.font.heights.xl};
     }
   `}
 `;
@@ -62,13 +62,17 @@ export const MainInput = styled.input`
       color: ${theme.colors.spunPearl};
     }
 
-    @media (max-width: ${theme.breakpoints.lg}) {
+    @media (max-width: ${theme.breakpoints.md}) {
+      font-size: ${theme.font.sizes.md};
+      line-height: ${theme.font.heights.md};
       height: 50px;
+      padding: 0 16px;
     }
   `}
 `;
 
 export const Tags = styled.div`
   display: flex;
-  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 `;

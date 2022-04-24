@@ -1,15 +1,16 @@
 import styled, { css } from 'styled-components';
+import { DefaultContainer } from '@src/themes/common';
 
-export const Container = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1170px;
-  padding-left: 15px;
-  padding-right: 15px;
+export const Container = styled(DefaultContainer)`
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+
+    @media (max-width: ${theme.breakpoints.lg}) {
+      padding-bottom: 15px;
+    }
+  `}
 `;
 
 export const ResponseWrapper = styled.div`
@@ -30,7 +31,7 @@ export const ResponseWrapper = styled.div`
     }
     
     @media (max-width: ${theme.breakpoints.lg}) {
-      margin-top: 20px;
+      margin-top: 15px;
     }
 
     @media (max-width: ${theme.breakpoints.md}) {
@@ -120,9 +121,11 @@ export const ResultsFoundWrapper = styled.div`
   ${({ theme }) => css`
     border-bottom: solid ${theme.colors.silver} 1px;
     display: flex;
-    margin-bottom: 24px;
     padding: 24px;
     width: 100%;
+    @media (max-width: ${theme.breakpoints.md}) {
+      padding: 16px 16px 16px 0px;
+    }
   `}
 `;
 
@@ -130,13 +133,25 @@ export const ResultsFound = styled.p`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xl};
     line-height: ${theme.font.heights.xl};
+    @media (max-width: ${theme.breakpoints.md}) {
+      font-size: ${theme.font.sizes.md};
+      line-height: ${theme.font.heights.md};
+    }
   `}
 `;
 
 export const NotFoundWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
+  ${({ theme }) => css`
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 24px;
+    @media (max-width: ${theme.breakpoints.md}) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  `}
 `;
 
 export const NotFoundBox = styled.div`
@@ -146,7 +161,8 @@ export const NotFoundBox = styled.div`
 
 export const NotFoundTitle = styled.p`
   ${({ theme }) => css`
-    font-size: 32px;
+    font-size: ${theme.font.sizes.xxxl};
+    line-height: ${theme.font.heights.xxxl};
     font-weight: ${theme.font.weights.bold};
     max-width: 350px;
   `}
@@ -158,9 +174,10 @@ export const NotFoundOptions = styled.ul`
 
 export const NotFoundDescription = styled.li`
   ${({ theme }) => css`
-    font-size: 16px;
+    font-size: ${theme.font.sizes.md};
+    line-height: ${theme.font.heights.md};
     font-weight: ${theme.font.weights.regular};
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     &::marker {
       color: ${theme.colors.denim};
     }
@@ -168,6 +185,12 @@ export const NotFoundDescription = styled.li`
 `;
 
 export const NotFoundImage = styled.img`
-  filter: grayscale();
-  width: 200px;
+  ${({ theme }) => css`
+    filter: grayscale();
+    width: 200px;
+    
+    @media (max-width: ${theme.breakpoints.md}) {
+      margin-top: 16px;
+    }
+  `}
 `;
