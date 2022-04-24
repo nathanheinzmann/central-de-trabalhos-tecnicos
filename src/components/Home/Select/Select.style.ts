@@ -81,6 +81,8 @@ export const Options = styled.ul<Types.OptionsProps>`
     list-style: none;
     position: absolute;
     right: 0px;
+    max-height: 250px;
+    overflow-y: auto;
     top: calc(100% - 1px);
     transition: opacity 200ms ease-in-out;
     z-index: 100;

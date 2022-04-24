@@ -5,6 +5,7 @@ const translate = (text: string) => {
     title: "Título",
     student: "Autor",
     limits: "Período",
+    workType: "Tipo de trabalho",
   };
 
   return dictionary[text as keyof typeof dictionary];

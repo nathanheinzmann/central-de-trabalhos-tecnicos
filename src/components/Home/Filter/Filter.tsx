@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import * as S from './Filter.style';
 import { Modal } from '@src/components/Home';
 
-const Filter = ({ filterContent }: any) => {
+const Filter = ({ selectOptions, content }: any) => {
+  const {
+    image,
+  } = content;
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -10,17 +13,16 @@ const Filter = ({ filterContent }: any) => {
   };
 
   return (
-    <div>
-      <S.Button style={{ backgroundColor: 'transparent' }} onClick={handleClickOpen}>
-        <img alt="filtros" src="assets/images/filters.webp" />
+    <S.Wrapper>
+      <S.Button onClick={handleClickOpen}>
+        <S.Image alt={image.alt} src={image.src} />
       </S.Button>
-
       <Modal
         open={open}
-        filterContent={filterContent}
+        selectOptions={selectOptions}
         setOpen={setOpen}
       />
-    </div>
+    </S.Wrapper>
   );
 };
 

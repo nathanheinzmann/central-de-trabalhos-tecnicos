@@ -8,8 +8,8 @@ import { inputsActions } from '@src/store/modules/inputs';
 import { InputsState, InputsTypes } from '@src/store/modules/inputs/inputs.types';
 import { Tag } from '@src/components/Home';
 
-const DashboardTopInfo = ({ dashboardContent, filterContent }: DashboardTopInfoProps) => {
-  const { title, placeholder } = dashboardContent;
+const DashboardTopInfo = ({ content, selectOptions }: DashboardTopInfoProps) => {
+  const { title, placeholder, filter } = content;
   const inputs: InputsState = useSelector(({ inputs }: AppState) => inputs);
   const dispatch = useDispatch();
   const tags = inputs && Object.keys(inputs).map((input) => ({ type: input as InputsTypes, value: inputs[input as InputsTypes] }));
@@ -19,7 +19,7 @@ const DashboardTopInfo = ({ dashboardContent, filterContent }: DashboardTopInfoP
     dispatch(inputsActions.addFilter(value, 'title'));
   };
 
-  const mapTags = tags.map(({ value, type }) => isValidTag(String(value)) && <Tag value={String(value)} type={type} />);
+  const mapTags = tags.map(({ value, type }) => isValidTag(String(value)) && <Tag value={String(value)} type={type} key={type} />);
 
   return (
     <S.Container>
@@ -30,7 +30,7 @@ const DashboardTopInfo = ({ dashboardContent, filterContent }: DashboardTopInfoP
           placeholder={placeholder}
           value={inputs.title}
         />
-        <Filter filterContent={filterContent} />
+        <Filter content={filter} selectOptions={selectOptions} />
       </S.Form>
       <S.Tags>
         {tags && mapTags}

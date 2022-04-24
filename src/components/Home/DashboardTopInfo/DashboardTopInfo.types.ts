@@ -1,8 +1,13 @@
 export type DashboardTopInfoProps = {
-  dashboardContent: {
-    buttonContent: string;
+  content: {
     title: string;
     placeholder: string;
-  }
-  filterContent: any;
+    filter: {
+      image: {
+        src: string;
+        alt: string;
+      };
+    };
+  };
+  selectOptions: any;
 }

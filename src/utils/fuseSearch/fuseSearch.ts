@@ -1,5 +1,5 @@
-import { InputsState } from '@src/store/modules/inputs/inputs.types';
 import Fuse from 'fuse.js';
+import { InputsState } from '@src/store/modules/inputs/inputs.types';
 
 type Props = {
   inputs: InputsState;
@@ -15,6 +15,7 @@ const fuseSearch = async ({ articles, setAllArticles, inputs }: Props) => {
     student,
     teacher,
     title,
+    workType,
   } = inputs;
 
   //search by title
@@ -54,6 +55,13 @@ const fuseSearch = async ({ articles, setAllArticles, inputs }: Props) => {
   if (teacher !== 'TODOS') {
     filteredArticles = filteredArticles.filter(
       (article: any) => article.teacher === teacher
+    );
+  };
+
+  //search by workType
+  if (workType !== 'TODOS') {
+    filteredArticles = filteredArticles.filter(
+      (article: any) => article.type === workType
     );
   };
 

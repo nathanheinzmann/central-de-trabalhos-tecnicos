@@ -4,13 +4,21 @@ import * as S from './Modal.style';
 import { inputsActions } from '@src/store/modules/inputs';
 import { Select, Input, RangeSlider } from '@src/components/Home';
 
+type ModalProps = {
+  open: boolean;
+  selectOptions: {
+    type: string;
+    options: string[];
+  }[];
+  setOpen: (value: boolean) => void;
+};
+
 const Modal = ({
-  filterContent,
+  selectOptions,
   open,
   setOpen,
-}: any) => {
+}: ModalProps) => {
   const dispatch = useDispatch();
-  const { selectOptions } = filterContent;
   const modalRef = useRef<HTMLDivElement>(null);
 
   const handleClose = () => {

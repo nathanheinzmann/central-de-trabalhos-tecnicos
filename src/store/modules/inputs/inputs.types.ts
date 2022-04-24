@@ -20,4 +20,5 @@ export type InputsState = {
   course: string,
   teacher: string,
   limits: number[],
+  workType: string,
 };

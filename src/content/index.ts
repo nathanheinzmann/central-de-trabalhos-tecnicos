@@ -1,7 +1,7 @@
-import dashboard from './dashboard';
+import homeContent from './home';
 
 const contents = {
-  dashboard,
+  homeContent,
 };
 
 const getContent = (contentType: string) => contents[contentType as keyof typeof contents];

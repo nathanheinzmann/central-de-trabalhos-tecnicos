@@ -10,7 +10,7 @@ export type SelectProps = {
   disabled?: boolean;
   type: keyof InputsState;
   onChange?: (value: string) => void;
-  options?: Array<string>;
+  options?: string[];
 };
 
 export type FieldProps = {

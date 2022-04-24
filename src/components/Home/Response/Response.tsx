@@ -7,13 +7,11 @@ import { fuseSearch } from '@src/utils';
 import { InputsState } from '@src/store/modules/inputs/inputs.types';
 import { AppState } from '@src/store/store.types';
 
-const Response = ({ articles, dashboardContent }: ResponseTypes) => {
-  const { notFoundContent } = dashboardContent;
-  const { title: notFoundTitle, options } = notFoundContent;
+const Response = ({ articles, content }: ResponseTypes) => {
+  const { title, options } = content;
   const [allArticles, setAllArticles] = useState<ResponseTypes['articles']>(articles);
   const notFoundImageSrc = "assets/images/dog-search.png";
   const inputs: InputsState = useSelector(({ inputs }: AppState) => inputs);
-
 
   useEffect(() => {
     fuseSearch({ articles, setAllArticles, inputs });
@@ -29,7 +27,7 @@ const Response = ({ articles, dashboardContent }: ResponseTypes) => {
     <>
       <S.NotFoundWrapper>
         <S.NotFoundBox>
-          <S.NotFoundTitle>{notFoundTitle}</S.NotFoundTitle>
+          <S.NotFoundTitle>{title}</S.NotFoundTitle>
           <S.NotFoundOptions>
             {options.map(option => <S.NotFoundDescription key={option}>{option}</S.NotFoundDescription>)}
           </S.NotFoundOptions>

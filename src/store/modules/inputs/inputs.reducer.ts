@@ -5,6 +5,7 @@ const initialState: InputsState = {
   student: '',
   teacher: 'TODOS',
   course: 'TODOS',
+  workType: 'TODOS',
   limits: [1995, new Date().getFullYear()],
 };
 

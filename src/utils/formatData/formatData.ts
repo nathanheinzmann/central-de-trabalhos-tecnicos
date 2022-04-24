@@ -12,7 +12,7 @@ const formatData = (apiArticle: any) => {
     student: acf.student || '',
     teacher: acf.teacher || '',
     title: acf.title || '',
-    type: acf.type || '',
+    workType: acf.type || '',
     year: acf.year || '',
   };
 }
