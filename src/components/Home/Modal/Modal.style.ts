@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ModalProps } from "./Modal.types";
+import { ButtonProps, ModalProps } from "./Modal.types";
 
 export const Modal = styled.div<ModalProps>`
   ${({ open }) => css`
@@ -26,11 +26,11 @@ export const Buttons = styled.div`
   justify-content: space-around;
 `;
 
-export const Button = styled.button`
-  ${({ theme }) => theme && css`
+export const Button = styled.button<ButtonProps>`
+  ${({ theme, isBlue }) => theme && css`
     border: solid 1px ${theme.colors.silver};
-    color: ${theme.colors.mineShaft};
-    background-color: transparent;
+    color: ${isBlue ? theme.colors.white : theme.colors.mineShaft};
+    background-color: ${isBlue ? theme.colors.denim : 'transparent'};
     font-size: ${theme.font.sizes.md};
     line-height: ${theme.font.sizes.md};
     display: flex;
@@ -39,7 +39,7 @@ export const Button = styled.button`
     width: 100%;
     padding: 5px 0;
     border-radius: 5px;
-    margin: 15px 5px;
+    margin: 15px 5px 0px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     

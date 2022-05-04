@@ -1,12 +1,13 @@
 import { InputsAction, InputsActionTypes, InputsState, InputsTypes } from './inputs.types';
 
 const initialState: InputsState = {
-  title: '',
-  student: '',
-  teacher: 'TODOS',
   course: 'TODOS',
-  workType: 'TODOS',
+  knowledge: '',
   limits: [1995, new Date().getFullYear()],
+  student: '',
+  teacher: '',
+  title: '',
+  workType: 'TODOS',
 };
 
 const InputsReducer = (state = initialState, action: InputsAction) => {

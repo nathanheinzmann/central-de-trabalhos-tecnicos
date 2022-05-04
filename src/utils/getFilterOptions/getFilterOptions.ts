@@ -16,10 +16,6 @@ const getFilterOptions = async () => {
       options: json.map(({ acf }) => acf.course)
     },
     {
-      type: 'teacher',
-      options: json.map(({ acf }) => acf.teacher)
-    },
-    {
       type: 'workType',
       options: json.map(({ acf }) => acf.type)
     }

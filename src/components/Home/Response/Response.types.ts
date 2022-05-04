@@ -6,7 +6,7 @@ type Post = {
 };
 
 export type ResponseTypes = {
-  articles: Post[],
+  allArticles: Post[],
   content: {
     title: string,
     options: string[],

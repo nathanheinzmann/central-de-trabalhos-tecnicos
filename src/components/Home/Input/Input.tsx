@@ -41,6 +41,7 @@ const Input = ({ type }: Props) => {
         onBlur={handleOnBlur}
         onChange={({ target }) => handleAddFilter(target.value)}
         value={String(inputs[type])}
+        inputMode="numeric"
       />
     </S.Wrapper>
   );

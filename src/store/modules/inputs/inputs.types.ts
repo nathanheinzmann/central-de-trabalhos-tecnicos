@@ -15,10 +15,11 @@ export type InputsAction = {
 }
 
 export type InputsState = {
-  title: string,
-  student: string,
   course: string,
-  teacher: string,
+  knowledge: string,
   limits: number[],
+  student: string,
+  teacher: string,
+  title: string,
   workType: string,
 };

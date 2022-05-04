@@ -1,19 +1,53 @@
+import translate from "../translate";
+
 const formatData = (apiArticle: any) => {
+  const { id, acf } = apiArticle;
+
   const {
-    id,
-    acf,
-  } = apiArticle;
+    course,
+    teacher,
+    type,
+    year,
+    keywords,
+    student,
+    knowledge,
+    title,
+  } = acf;
+
+  const infos = [
+    {
+      info: translate("workType"),
+      value: type,
+    },
+    {
+      info: translate("limits"),
+      value: year,
+    },
+    {
+      info: translate("course"),
+      value: course,
+    },
+    {
+      info: translate("teacher"),
+      value: teacher,
+    },
+    {
+      info: translate("knowledge"),
+      value: knowledge,
+    },
+  ];
 
   return {
-    course: acf.course || '',
+    course: course || '',
     id,
-    infos: [acf.course, acf.teacher, acf.type, acf.year],
-    keywords: acf.keywords || [],
-    student: acf.student || '',
-    teacher: acf.teacher || '',
-    title: acf.title || '',
-    workType: acf.type || '',
-    year: acf.year || '',
+    infos: infos,
+    keywords: keywords || [],
+    knowledge: knowledge || '',
+    student: student || '',
+    teacher: teacher || '',
+    title: title || '',
+    workType: type || '',
+    year: year || '',
   };
 }
 

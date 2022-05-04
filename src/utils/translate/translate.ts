@@ -1,14 +1,7 @@
-const translate = (text: string) => {
-  const dictionary = {
-    course: "Curso",
-    teacher: "Professor",
-    title: "Título",
-    student: "Autor",
-    limits: "Período",
-    workType: "Tipo de trabalho",
-  };
+import getContent from "@src/content";
 
-  return dictionary[text as keyof typeof dictionary];
-};
+const dictionary = getContent('dictionaryContent');
+
+const translate = (text: string) => dictionary[text as keyof typeof dictionary];
 
 export default translate;

@@ -53,16 +53,18 @@ const Modal = ({
     <S.Modal open={open}>
       <S.Wrapper ref={modalRef}>
         <S.WrapperInfoDialog>
-          <Input type={'student'} />
           {mapSelectOptions}
+          <Input type={'student'} />
+          <Input type={'teacher'} />
+          <Input type={'knowledge'} />
         </S.WrapperInfoDialog>
         <RangeSlider />
         <S.Buttons>
-          <S.Button onClick={handleClose}>
-            Fechar
-          </S.Button>
           <S.Button onClick={handleClearFilter}>
             Limpar Filtros
+          </S.Button>
+          <S.Button isBlue onClick={handleClose}>
+            Fechar
           </S.Button>
         </S.Buttons>
       </S.Wrapper>

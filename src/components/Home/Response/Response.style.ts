@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { InfoProps } from './Response.types';
 import { DefaultContainer } from '@src/themes/common';
 
 export const Container = styled(DefaultContainer)`
@@ -110,6 +111,8 @@ export const Info = styled.p`
     font-size: ${theme.font.sizes.md};
     line-height: ${theme.font.heights.md};
     margin-top: 3px;
+    position: relative;
+
     @media (max-width: ${theme.breakpoints.lg}) {
       font-size: ${theme.font.sizes.sm};
       line-height: ${theme.font.heights.sm};

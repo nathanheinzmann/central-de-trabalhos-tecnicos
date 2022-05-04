@@ -1,21 +1,10 @@
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import * as S from './Response.style';
 import { ResponseTypes } from './Response.types';
-import { fuseSearch } from '@src/utils';
-import { InputsState } from '@src/store/modules/inputs/inputs.types';
-import { AppState } from '@src/store/store.types';
 
-const Response = ({ articles, content }: ResponseTypes) => {
+const Response = ({ allArticles, content }: ResponseTypes) => {
   const { title, options } = content;
-  const [allArticles, setAllArticles] = useState<ResponseTypes['articles']>(articles);
   const notFoundImageSrc = "assets/images/dog-search.png";
-  const inputs: InputsState = useSelector(({ inputs }: AppState) => inputs);
-
-  useEffect(() => {
-    fuseSearch({ articles, setAllArticles, inputs });
-  }, [inputs, articles]);
 
   const resultsFoundText = allArticles.length > 1 ?
     `${allArticles.length} resultados encontrados` :
@@ -54,11 +43,7 @@ const Response = ({ articles, content }: ResponseTypes) => {
               <S.AuthorName>{student}</S.AuthorName>
             </S.TitleName>
             <S.Infos>
-              {
-                infos.map((info) => (
-                  <S.Info key={info}>{info}</S.Info>
-                ))
-              }
+              {infos.map(({ value, info }: any) => <S.Info title={info} key={value}>{value}</S.Info>)}
             </S.Infos>
           </S.ResponseWrapper>
         </Link>

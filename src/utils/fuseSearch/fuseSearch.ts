@@ -11,6 +11,7 @@ const fuseSearch = async ({ articles, setAllArticles, inputs }: Props) => {
   let filteredArticles = articles;
   const {
     course,
+    knowledge,
     limits,
     student,
     teacher,
@@ -27,8 +28,7 @@ const fuseSearch = async ({ articles, setAllArticles, inputs }: Props) => {
       keys: ['title'],
     });
     const fuseArticles = fuse.search(title);
-    const allFuseArticles = fuseArticles.map(({ item }) => item);
-    filteredArticles = allFuseArticles;
+    filteredArticles = fuseArticles.map(({ item }) => item);
   };
 
   //search by student
@@ -40,29 +40,45 @@ const fuseSearch = async ({ articles, setAllArticles, inputs }: Props) => {
       keys: ['student'],
     });
     const fuseArticles = fuse.search(student);
-    const allFuseArticles = fuseArticles.map(({ item }) => item);
-    filteredArticles = allFuseArticles;
+    filteredArticles = fuseArticles.map(({ item }) => item);
+  };
+
+  //search by teacher
+  if (teacher) {
+    const fuse = new Fuse(filteredArticles, {
+      threshold: 0,
+      includeScore: true,
+      ignoreLocation: true,
+      keys: ['teacher'],
+    });
+    const fuseArticles = fuse.search(teacher);
+    filteredArticles = fuseArticles.map(({ item }) => item);
   };
 
   //search by course
   if (course !== 'TODOS') {
     filteredArticles = filteredArticles.filter(
-      (article: any) => article.course === course
-    );
-  };
-
-  //search by teacher
-  if (teacher !== 'TODOS') {
-    filteredArticles = filteredArticles.filter(
-      (article: any) => article.teacher === teacher
+      ({ course }: any) => course === course
     );
   };
 
   //search by workType
   if (workType !== 'TODOS') {
     filteredArticles = filteredArticles.filter(
-      (article: any) => article.workType === workType
+      ({ workType }: any) => workType === workType
     );
+  };
+
+  //search by knowledge
+  if (knowledge) {
+    const fuse = new Fuse(filteredArticles, {
+      threshold: 0,
+      includeScore: true,
+      ignoreLocation: true,
+      keys: ['knowledge'],
+    });
+    const fuseArticles = fuse.search(knowledge);
+    filteredArticles = fuseArticles.map(({ item }) => item);
   };
 
   //search by years limits

@@ -76,3 +76,13 @@ export const Tags = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 `;
+
+export const WrapperInfoDialog = styled.div`
+  ${({ theme }) => theme && css`
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px 0px;
+  `};
+`;

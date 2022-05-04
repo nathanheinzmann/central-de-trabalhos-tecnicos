@@ -9,7 +9,3 @@ export type ArticleProps = {
     year: string;
   }
 }
-
-export type ModalStyleProps = {
-  isModalOpen: boolean;
-};

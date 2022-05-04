@@ -38,24 +38,6 @@ export const Field = styled.div`
   `}
 `;
 
-export const TopLabel = styled.label`
-  ${({ theme }) => css`
-    background-color: ${theme.colors.white};
-    color: ${theme.colors.mineShaft};
-    font-size: ${theme.font.sizes.sm};
-    left: 10px;
-    padding: 0px 5px;
-    top: 16px;
-    pointer-events: none;
-    position: absolute;
-    transition: transform 200ms ease-in-out, color 200ms ease-in-out;
-
-    &.selected {
-      color: ${theme.colors.denim};
-    }
-  `}
-`;
-
 export const Label = styled.p`
   ${({ theme }) => css`
     color: ${theme.colors.mineShaft};
