@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { InfoProps } from './Response.types';
 import { DefaultContainer } from '@src/themes/common';
 
 export const Container = styled(DefaultContainer)`
