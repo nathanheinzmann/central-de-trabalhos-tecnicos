@@ -1,4 +1,5 @@
 import Fuse from 'fuse.js';
+import { Article } from '@src/templates/Article';
 import { InputsState } from '@src/store/modules/inputs/inputs.types';
 
 type Props = {
@@ -57,15 +58,16 @@ const fuseSearch = async ({ articles, setAllArticles, inputs }: Props) => {
 
   //search by course
   if (course !== 'TODOS') {
+    console.log('course', course);
     filteredArticles = filteredArticles.filter(
-      ({ course }: any) => course === course
+      (article: any) => article.course === course
     );
   };
 
   //search by workType
   if (workType !== 'TODOS') {
     filteredArticles = filteredArticles.filter(
-      ({ workType }: any) => workType === workType
+      (article: any) => article.workType === workType
     );
   };
 
