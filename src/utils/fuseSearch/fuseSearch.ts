@@ -1,5 +1,4 @@
 import Fuse from 'fuse.js';
-import { Article } from '@src/templates/Article';
 import { InputsState } from '@src/store/modules/inputs/inputs.types';
 
 type Props = {
