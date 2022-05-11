@@ -6,22 +6,27 @@ export const Wrapper = styled.div`
     background-color: ${theme.colors.alto};
     border-radius: 0 5px 5px 0;
     height: 70px;
-    padding: 0 24px;
 
     @media (max-width: ${theme.breakpoints.md}) {
       height: 50px;
-      padding: 0 16px;
     }
   `}
 `;
 
 export const Button = styled.button`
-  border: none;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+  ${({ theme }) => css`
+      padding: 0 24px;
+      border: none;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      @media (max-width: ${theme.breakpoints.md}) {
+        height: 50px;
+        padding: 0 16px;
+      }
+  `}
 `;
 
 export const TitleButton = styled.span`
