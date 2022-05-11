@@ -1,7 +1,18 @@
 import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
-  display: flex;
+  ${({ theme }) => css`
+    display: flex;
+    background-color: ${theme.colors.alto};
+    border-radius: 0 5px 5px 0;
+    height: 70px;
+    padding: 0 24px;
+
+    @media (max-width: ${theme.breakpoints.md}) {
+      height: 50px;
+      padding: 0 16px;
+    }
+  `}
 `;
 
 export const Button = styled.button`
@@ -13,14 +24,27 @@ export const Button = styled.button`
   cursor: pointer;
 `;
 
+export const TitleButton = styled.span`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.xl};
+    line-height: ${theme.font.heights.xl};
+    color: ${theme.colors.mineShaft};
+    font-weight: ${theme.font.weights.bold};
+    margin-right: 24px;
+    @media (max-width: ${theme.breakpoints.md}) {
+      margin-right: 16px;
+      font-size: ${theme.font.sizes.lg};
+      line-height: ${theme.font.heights.lg};
+    }
+  `}
+`;
+
 export const Image = styled.img`
   ${({ theme }) => css`
-    padding: 0 24px 0 0;
     height: 28px;
 
     @media (max-width: ${theme.breakpoints.md}) {
       height: 20px;
-      padding: 0 16px 0 0;
     }
   `}
 `;

@@ -15,6 +15,7 @@ const Filter = ({ selectOptions, content }: any) => {
   return (
     <S.Wrapper>
       <S.Button onClick={handleClickOpen}>
+        <S.TitleButton>Filtrar</S.TitleButton>
         <S.Image alt={image.alt} src={image.src} />
       </S.Button>
       <Modal

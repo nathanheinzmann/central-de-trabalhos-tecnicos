@@ -16,10 +16,6 @@ const Home = ({ articles, homeContent, selectOptions }: any) => {
 
   useEffect(() => {
     fuseSearch({ articles, setAllArticles, inputs });
-    console.log({
-      articles,
-      inputs,
-    })
   }, [articles, inputs]);
 
 

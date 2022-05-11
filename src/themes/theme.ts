@@ -8,6 +8,7 @@ const theme = {
     xl: '1104px',
   },
   colors: {
+    alto: '#D9D9D9',
     danube: '#538DD1',
     denim: '#1565C0',
     gallery: '#EDEDED',

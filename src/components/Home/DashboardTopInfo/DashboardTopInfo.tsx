@@ -11,15 +11,16 @@ import { Tag } from '@src/components/Home';
 const DashboardTopInfo = ({ content, selectOptions }: DashboardTopInfoProps) => {
   const { title, placeholder, filter } = content;
   const inputs: InputsState = useSelector(({ inputs }: AppState) => inputs);
-  const dispatch = useDispatch();
   const tags = inputs && Object.keys(inputs).map((input) => ({ type: input as InputsTypes, value: inputs[input as InputsTypes] }));
-  const isValidTag = (value: string) => value.length > 0 && value !== "TODOS" && value && value !== `${1995},${new Date().getFullYear()}`;
+
+  const dispatch = useDispatch();
+  const isValidTag = (value: string, type: string) => type !== 'title' && value.length > 0 && value !== "TODOS" && value && value !== `${1995},${new Date().getFullYear()}`;
 
   const handleAddFilter = (value: string) => {
     dispatch(inputsActions.addFilter(value, 'title'));
   };
 
-  const mapTags = tags.map(({ value, type }) => isValidTag(String(value)) && <Tag value={String(value)} type={type} key={type} />);
+  const mapTags = tags.map(({ value, type }) => isValidTag(String(value), type) && <Tag value={String(value)} type={type} key={type} />);
 
   return (
     <S.Container>
