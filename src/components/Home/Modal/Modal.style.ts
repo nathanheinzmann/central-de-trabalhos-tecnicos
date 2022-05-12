@@ -57,14 +57,12 @@ export const Button = styled.button<ButtonProps>`
 
 export const Wrapper = styled.div`
   ${({ theme }) => theme && css`
-    padding: 30px;
     border-radius: 5px;
+    padding: 30px;
     background-color: ${({ theme }) => theme.colors.white};
-    width: calc(100% - 30px);
-    max-width: 500px;
+    width: 550px;
     @media (max-width: ${theme.breakpoints.sm}) {
-      grid-template-columns: 1fr;
-      max-width: unset;
+      width: calc(100% - 30px);
       padding: 20px;
     }
   `};
@@ -75,8 +73,6 @@ export const WrapperInfoDialog = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
-    padding-bottom: 20px;
-
     @media (max-width: ${theme.breakpoints.sm}) {
       grid-template-columns: 1fr;
     }

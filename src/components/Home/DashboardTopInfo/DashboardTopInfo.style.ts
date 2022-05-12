@@ -56,17 +56,16 @@ export const MainInput = styled.input`
     height: 70px;
     line-height: ${theme.font.heights.lg};
     padding: 0 24px;
-    width: 200px;
     
     ::placeholder {
       color: ${theme.colors.spunPearl};
     }
-
+    
     @media (max-width: ${theme.breakpoints.md}) {
-      font-size: ${theme.font.sizes.md};
-      line-height: ${theme.font.heights.md};
+      font-size: ${theme.font.sizes.sm};
+      line-height: ${theme.font.heights.sm};
       height: 50px;
-      padding: 0 16px;
+      padding: 0 12px;
     }
   `}
 `;

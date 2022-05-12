@@ -24,7 +24,7 @@ export const Button = styled.button`
       cursor: pointer;
       @media (max-width: ${theme.breakpoints.md}) {
         height: 50px;
-        padding: 0 16px;
+        padding: 0 12px;
       }
   `}
 `;
@@ -37,9 +37,9 @@ export const TitleButton = styled.span`
     font-weight: ${theme.font.weights.bold};
     margin-right: 24px;
     @media (max-width: ${theme.breakpoints.md}) {
-      margin-right: 16px;
-      font-size: ${theme.font.sizes.lg};
-      line-height: ${theme.font.heights.lg};
+      margin-right: 12px;
+      font-size: ${theme.font.sizes.sm};
+      line-height: ${theme.font.heights.sm};
     }
   `}
 `;

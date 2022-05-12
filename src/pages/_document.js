@@ -43,7 +43,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Krona+One&display=optional"
             rel="stylesheet"
           />
-          <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/e/ec/TextSecure_Blue_Icon.png" />
+          <link rel="icon" href="/assets/images/logo.png" />
         </Head>
         <body>
           <Main />

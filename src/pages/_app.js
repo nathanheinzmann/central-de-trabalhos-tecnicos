@@ -12,7 +12,7 @@ const MyApp = ({ Component, pageProps }) => {
     <Provider store={store}>
       <ThemeProvider theme={vanilla}>
         <Head>
-          <title key="title">CTT</title>
+          <title key="title">Central de Trabalhos Técnicos</title>
         </Head>
         <Menu />
         <Component {...pageProps} />
