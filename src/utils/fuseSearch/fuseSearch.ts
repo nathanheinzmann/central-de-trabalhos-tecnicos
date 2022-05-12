@@ -81,7 +81,7 @@ const fuseSearch = async ({ articles, setAllArticles, inputs }: Props) => {
     filteredArticles = fuseArticles.map(({ item }) => item);
   };
 
-  //search by keywords, user can search by multiple keywords
+  //search by keywords
   if (inputs.keywords) {
     const keywords = inputs.keywords.split(',');
     keywords.forEach((keyword: string) => {
