@@ -22,8 +22,14 @@ export const Modal = styled.div<ModalProps>`
 `;
 
 export const Buttons = styled.div`
-  display: flex;
-  justify-content: space-around;
+  ${({ theme }) => theme && css`
+    display: flex;
+    justify-content: space-around;
+    @media (max-width: ${theme.breakpoints.sm}) {
+      flex-direction: column;
+    }
+  `}
+
 `;
 
 export const Button = styled.button<ButtonProps>`
@@ -37,7 +43,7 @@ export const Button = styled.button<ButtonProps>`
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 5px 0;
+    padding: 15px 0;
     border-radius: 5px;
     margin: 15px 5px 0px;
     cursor: pointer;

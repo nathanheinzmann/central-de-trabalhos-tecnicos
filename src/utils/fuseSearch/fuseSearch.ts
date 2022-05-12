@@ -57,7 +57,6 @@ const fuseSearch = async ({ articles, setAllArticles, inputs }: Props) => {
 
   //search by course
   if (course !== 'TODOS') {
-    console.log('course', course);
     filteredArticles = filteredArticles.filter(
       (article: any) => article.course === course
     );
@@ -81,6 +80,22 @@ const fuseSearch = async ({ articles, setAllArticles, inputs }: Props) => {
     const fuseArticles = fuse.search(knowledge);
     filteredArticles = fuseArticles.map(({ item }) => item);
   };
+
+  //search by keywords, user can search by multiple keywords
+  if (inputs.keywords) {
+    const keywords = inputs.keywords.split(',');
+    keywords.forEach((keyword: string) => {
+      const fuse = new Fuse(filteredArticles, {
+        threshold: 0,
+        includeScore: true,
+        ignoreLocation: true,
+        keys: ['keywords'],
+      });
+      const fuseArticles = fuse.search(keyword);
+      filteredArticles = fuseArticles.map(({ item }) => item);
+    }
+    );
+  }
 
   //search by years limits
   filteredArticles = filteredArticles.filter(

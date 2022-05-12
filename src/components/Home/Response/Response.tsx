@@ -6,11 +6,17 @@ const Response = ({ allArticles, content }: ResponseTypes) => {
   const { title, options } = content;
   const notFoundImageSrc = "assets/images/dog-search.png";
 
-  const resultsFoundText = allArticles.length > 1 ?
-    `${allArticles.length} resultados encontrados` :
-    !allArticles.length ?
-      'nenhum resultado encontrado' :
-      '1 resultado encontrado';
+  const mapNotFoundOptions = options.map(option => <S.NotFoundDescription key={option}>{option}</S.NotFoundDescription>);
+
+  const resultsFoundText = () => {
+    const textOptions = {
+      0: "Nenhum resultado encontrado",
+      1: "1 resultado encontrado",
+      default: `${allArticles.length} resultados encontrados`,
+    };
+
+    return textOptions[allArticles.length as keyof typeof textOptions] || textOptions.default;
+  }
 
   const notFound = (
     <>
@@ -18,7 +24,7 @@ const Response = ({ allArticles, content }: ResponseTypes) => {
         <S.NotFoundBox>
           <S.NotFoundTitle>{title}</S.NotFoundTitle>
           <S.NotFoundOptions>
-            {options.map(option => <S.NotFoundDescription key={option}>{option}</S.NotFoundDescription>)}
+            {mapNotFoundOptions}
           </S.NotFoundOptions>
         </S.NotFoundBox>
         <S.NotFoundBox>
@@ -54,7 +60,7 @@ const Response = ({ allArticles, content }: ResponseTypes) => {
     <S.Container>
       <S.ResultsFoundWrapper>
         <S.ResultsFound>
-          {resultsFoundText}
+          {resultsFoundText()}
         </S.ResultsFound>
       </S.ResultsFoundWrapper>
       {mapResponse}

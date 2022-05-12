@@ -57,6 +57,7 @@ const Modal = ({
           <Input type={'student'} />
           <Input type={'teacher'} />
           <Input type={'knowledge'} />
+          <Input type={'keywords'} />
         </S.WrapperInfoDialog>
         <RangeSlider />
         <S.Buttons>

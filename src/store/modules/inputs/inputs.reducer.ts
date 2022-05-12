@@ -3,6 +3,7 @@ import { InputsAction, InputsActionTypes, InputsState, InputsTypes } from './inp
 const initialState: InputsState = {
   course: 'TODOS',
   knowledge: '',
+  keywords: '',
   limits: [1995, new Date().getFullYear()],
   student: '',
   teacher: '',

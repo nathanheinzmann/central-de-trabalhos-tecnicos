@@ -16,6 +16,7 @@ export type InputsAction = {
 
 export type InputsState = {
   course: string,
+  keywords: string,
   knowledge: string,
   limits: number[],
   student: string,

@@ -9,6 +9,30 @@ export const Container = styled(DefaultContainer)`
   text-align: center;
 `;
 
+export const BackArea = styled.a`
+  text-decoration: none;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-self: flex-start;
+  align-items: center;
+  padding-bottom: 20px;
+`;
+
+export const BackText = styled.span`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.md};
+    line-height: ${theme.font.heights.md};
+    font-weight: ${theme.font.weights.bold};
+    color: ${theme.colors.mineShaft};
+  `}
+`;
+
+export const BackIcon = styled.img`
+  width: 30px;
+  height: 30px;
+`;
+
 export const Title = styled.h1`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xl};

@@ -12,6 +12,7 @@ const formatData = (apiArticle: any) => {
     student,
     knowledge,
     title,
+    file,
   } = acf;
 
   const infos = [
@@ -37,11 +38,14 @@ const formatData = (apiArticle: any) => {
     },
   ];
 
+  const allKeywords = keywords.length && keywords.map((keyword: any) => keyword.name);
+
   return {
     course: course || '',
+    file: file || '',
     id,
     infos: infos,
-    keywords: keywords || [],
+    keywords: allKeywords || [],
     knowledge: knowledge || '',
     student: student || '',
     teacher: teacher || '',

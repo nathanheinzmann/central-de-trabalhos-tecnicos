@@ -18,8 +18,6 @@ const Home = ({ articles, homeContent, selectOptions }: any) => {
     fuseSearch({ articles, setAllArticles, inputs });
   }, [articles, inputs]);
 
-
-
   return (
     <>
       <DashboardTopInfo selectOptions={selectOptions} content={dashboardTopInfo} />
