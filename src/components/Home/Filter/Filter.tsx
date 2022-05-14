@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './Filter.style';
 import { Modal } from '@src/components/Home';
 
@@ -7,6 +7,10 @@ const Filter = ({ selectOptions, content }: any) => {
     image,
   } = content;
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : 'auto';
+  }, [open]);
 
   const handleClickOpen = () => {
     setOpen(true);
