@@ -19,6 +19,10 @@ export const Wrapper = styled.div<Types.OptionsProps>`
       position: absolute;
       transition: transform 200ms ease-in-out, color 200ms ease-in-out;
       height: 24px;
+      @media (max-width: ${theme.breakpoints.md}) {
+        height: 12px;
+
+    }
     }
   `}
 `;
@@ -35,6 +39,11 @@ export const Field = styled.div`
     min-height: 48px;
     padding: 14px 8px;
     position: relative;
+    
+    @media (max-width: ${theme.breakpoints.md}) {
+      padding: 10px 8px;
+      min-height: 40px;
+    }
   `}
 `;
 
@@ -89,6 +98,11 @@ export const Option = styled.li`
     display: flex;
     justify-content: center;
     padding: 15px 8px;
+
+    @media (max-width: ${theme.breakpoints.md}) {
+      padding: 10px 8px;
+      min-height: 40px;
+    }
 
     &:hover {
       background-color: ${theme.colors.silver};

@@ -59,7 +59,7 @@ const Response = ({ showResponse, allArticles, content }: ResponseTypes) => {
           {resultsFoundText()}
         </S.ResultsFound>
       </S.ResultsFoundWrapper>}
-      {showResponse && mapResponse}
+      {mapResponse}
     </S.Container>
   );
 };

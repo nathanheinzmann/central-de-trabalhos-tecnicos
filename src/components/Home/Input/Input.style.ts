@@ -19,10 +19,18 @@ export const Label = styled.label`
     position: absolute;
     transition: transform 200ms ease-in-out, color 200ms ease-in-out;
 
+    @media (max-width: ${theme.breakpoints.md}) {
+      top: 12px;
+    }
+
     &.out {
       background: linear-gradient(0deg, transparent 50%, '${theme.colors.white}' 50%);
       color: ${theme.colors.mineShaft};
       transform: translateY(-24px) scale(0.9);
+      @media (max-width: ${theme.breakpoints.md}) {
+      transform: translateY(-20px) scale(0.9);
+        
+      }
 
       &.disabled {
         background: linear-gradient(0deg, transparent 40%, ${theme.colors.white} 40%);
@@ -48,6 +56,11 @@ export const Input = styled.input`
     outline: none;
     padding: 16px 16px 14px 16px;
     transition: border-color 200ms ease-in-out;
+
+    @media (max-width: ${theme.breakpoints.md}) {
+      padding: 10px 10px 8px 10px;
+      min-height: 40px;
+    }
 
     &:-webkit-autofill {
       background-color: transparent !important;

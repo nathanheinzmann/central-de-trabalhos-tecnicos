@@ -47,6 +47,11 @@ export const Button = styled.button<ButtonProps>`
     &:hover {
       border: solid 1px ${theme.colors.mineShaft};
     }
+
+    @media (max-width: ${theme.breakpoints.md}) {
+      margin: 8px 5px 0px;
+      padding: 10px 0;
+    }
   `};
 `;
 
@@ -57,8 +62,8 @@ export const Wrapper = styled.div`
     background-color: ${({ theme }) => theme.colors.white};
     width: 100%;
     max-width: 1140px;
-    @media (max-width: ${theme.breakpoints.sm}) {
-      padding: 20px;
+    @media (max-width: ${theme.breakpoints.md}) {
+      padding: 16px;
     }
   `};
 `;
@@ -67,9 +72,10 @@ export const WrapperInfoDialog = styled.div`
   ${({ theme }) => theme && css`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 24px;
     @media (max-width: ${theme.breakpoints.lg}) {
       grid-template-columns: 1fr 1fr;
+      grid-gap: 16px;
     }
     @media (max-width: ${theme.breakpoints.sm}) {
       grid-template-columns: 1fr;

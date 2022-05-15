@@ -25,6 +25,7 @@ export const Title = styled.h1`
     }
 
     @media (max-width: ${theme.breakpoints.md}) {
+      margin-top: 30px;
       font-size: ${theme.font.sizes.xl};
       line-height: ${theme.font.heights.xl};
     }
@@ -42,6 +43,9 @@ export const Form = styled.div`
     
     @media (max-width: ${theme.breakpoints.lg}) {
       margin: 30px 0 16px;
+    }
+    @media (max-width: ${theme.breakpoints.md}) {
+      margin: 16px;
     }
   `}
 `;
