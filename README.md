@@ -1,7 +1,5 @@
 # Technical Works Central
 
-![Logo CTT](public/assets/images/logo-readme.svg)
-
 ## Requirements
 
 - Git 2.25.1 or higher
