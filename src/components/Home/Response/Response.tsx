@@ -2,9 +2,8 @@ import Link from 'next/link';
 import * as S from './Response.style';
 import { ResponseTypes } from './Response.types';
 
-const Response = ({ allArticles, content }: ResponseTypes) => {
+const Response = ({ showResponse, allArticles, content }: ResponseTypes) => {
   const { title, options } = content;
-  const notFoundImageSrc = "assets/images/dog-search.png";
 
   const mapNotFoundOptions = options.map(option => <S.NotFoundDescription key={option}>{option}</S.NotFoundDescription>);
 
@@ -26,9 +25,6 @@ const Response = ({ allArticles, content }: ResponseTypes) => {
           <S.NotFoundOptions>
             {mapNotFoundOptions}
           </S.NotFoundOptions>
-        </S.NotFoundBox>
-        <S.NotFoundBox>
-          <S.NotFoundImage src={notFoundImageSrc} />
         </S.NotFoundBox>
       </S.NotFoundWrapper>
     </>
@@ -58,12 +54,12 @@ const Response = ({ allArticles, content }: ResponseTypes) => {
 
   return (
     <S.Container>
-      <S.ResultsFoundWrapper>
+      {showResponse && <S.ResultsFoundWrapper>
         <S.ResultsFound>
           {resultsFoundText()}
         </S.ResultsFound>
-      </S.ResultsFoundWrapper>
-      {mapResponse}
+      </S.ResultsFoundWrapper>}
+      {showResponse && mapResponse}
     </S.Container>
   );
 };

@@ -12,9 +12,11 @@ export default createGlobalStyle`
     body {
       background: ${theme.colors.gallery};
       color: ${theme.colors.mineShaft};
+      
       font: 400 16px Roboto, sans-serif;
       &::-webkit-scrollbar {
-        width: 8px;
+        width: 0px;
+        position: absolute;
       }
       &::-webkit-scrollbar-thumb {
         background-color: ${theme.colors.danube};

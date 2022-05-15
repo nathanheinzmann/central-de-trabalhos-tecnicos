@@ -143,17 +143,10 @@ export const ResultsFound = styled.p`
 `;
 
 export const NotFoundWrapper = styled.div`
-  ${({ theme }) => css`
     display: flex;
-    justify-content: space-around;
     width: 100%;
-    padding-top: 24px;
-    @media (max-width: ${theme.breakpoints.md}) {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-  `}
+    padding-top: 48px;
+    justify-content: center;
 `;
 
 export const NotFoundBox = styled.div`
@@ -166,7 +159,7 @@ export const NotFoundTitle = styled.p`
     font-size: ${theme.font.sizes.xxxl};
     line-height: ${theme.font.heights.xxxl};
     font-weight: ${theme.font.weights.bold};
-    max-width: 350px;
+    max-width: 100%;
   `}
 `;
 
@@ -182,17 +175,6 @@ export const NotFoundDescription = styled.li`
     margin-bottom: 12px;
     &::marker {
       color: ${theme.colors.denim};
-    }
-  `}
-`;
-
-export const NotFoundImage = styled.img`
-  ${({ theme }) => css`
-    filter: grayscale();
-    width: 200px;
-    
-    @media (max-width: ${theme.breakpoints.md}) {
-      margin-top: 16px;
     }
   `}
 `;

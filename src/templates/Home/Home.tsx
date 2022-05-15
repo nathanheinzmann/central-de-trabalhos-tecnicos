@@ -5,6 +5,7 @@ import { ResponseTypes } from '@src/components/Home/Response/Response.types';
 import { AppState } from '@src/store/store.types';
 import { InputsState } from '@src/store/modules/inputs/inputs.types';
 import { fuseSearch } from '@src/utils';
+import { hasFilter } from '@src/utils';
 
 const Home = ({ articles, homeContent, selectOptions }: any) => {
   const {
@@ -13,15 +14,19 @@ const Home = ({ articles, homeContent, selectOptions }: any) => {
   } = homeContent;
   const [allArticles, setAllArticles] = useState<ResponseTypes['allArticles']>(articles);
   const inputs: InputsState = useSelector(({ inputs }: AppState) => inputs);
+  const [showResponse, setShowResponse] = useState<boolean>(false);
 
   useEffect(() => {
     fuseSearch({ articles, setAllArticles, inputs });
+    let show = hasFilter(inputs);
+    console.log(show)
+    setShowResponse(show);
   }, [articles, inputs]);
 
   return (
     <>
       <DashboardTopInfo selectOptions={selectOptions} content={dashboardTopInfo} />
-      <Response allArticles={allArticles} content={response} />
+      <Response showResponse={showResponse} allArticles={allArticles} content={response} />
     </>
   );
 }

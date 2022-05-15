@@ -10,10 +10,11 @@ const content = {
     },
   },
   response: {
-    title: 'OOoops, sua pesquisa nao obteve respostas',
+    title: 'Sua pesquisa nao obteve respostas',
     options: [
       'Verifique se digitou corretamente.',
-      'Utilize termos mais genéricos na busca.',
+      'Tente buscar por termos diferentes.',
+      'Confira os campos de pesquisa.',
       'Limpe os filtros.',
     ],
   },
