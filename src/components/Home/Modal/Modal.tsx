@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import React, { useCallback, useEffect, useRef } from 'react';
+import React from 'react';
 import * as S from './Modal.style';
 import { inputsActions } from '@src/store/modules/inputs';
 import { Select, Input, RangeSlider } from '@src/components/Home';
@@ -19,7 +19,6 @@ const Modal = ({
   setOpen,
 }: ModalProps) => {
   const dispatch = useDispatch();
-  const modalRef = useRef<HTMLDivElement>(null);
 
   const handleClose = () => {
     setOpen(false);
@@ -29,29 +28,13 @@ const Modal = ({
     dispatch(inputsActions.clearFilter());
   };
 
-  const handleOutsideClick = useCallback(
-    (e: any) => {
-      if (open && modalRef.current && !modalRef.current.contains(e.target)) {
-        setOpen(false);
-      }
-    },
-    [open, setOpen],
-  );
-
-  useEffect(() => {
-    window.addEventListener('click', handleOutsideClick);
-    return () => {
-      window.removeEventListener('click', handleOutsideClick);
-    };
-  }, [handleOutsideClick]);
-
   const mapSelectOptions = selectOptions.map(({ options, type }: any) => (
     <Select key={type} options={options} type={type} />
   ));
 
   return (
-    <S.Modal open={open}>
-      <S.Wrapper ref={modalRef}>
+    <S.Modal className={open ? 'open' : ''}>
+      <S.Wrapper>
         <S.WrapperInfoDialog>
           {mapSelectOptions}
           <Input type={'student'} />

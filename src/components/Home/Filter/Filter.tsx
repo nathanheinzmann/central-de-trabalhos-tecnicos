@@ -1,32 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import * as S from './Filter.style';
-import { Modal } from '@src/components/Home';
 
-const Filter = ({ selectOptions, content }: any) => {
+const Filter = ({ content, handleClickFilter }: any) => {
   const {
     image,
   } = content;
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : 'auto';
-  }, [open]);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
   return (
     <S.Wrapper>
-      <S.Button onClick={handleClickOpen}>
+      <S.Button onClick={handleClickFilter}>
         <S.TitleButton>Filtrar</S.TitleButton>
         <S.Image alt={image.alt} src={image.src} />
       </S.Button>
-      <Modal
-        open={open}
-        selectOptions={selectOptions}
-        setOpen={setOpen}
-      />
     </S.Wrapper>
   );
 };

@@ -2,23 +2,18 @@ import styled, { css } from "styled-components";
 import { ButtonProps, ModalProps } from "./Modal.types";
 
 export const Modal = styled.div<ModalProps>`
-  ${({ open }) => css`
-    opacity: ${open ? 1 : 0};
-    visibility: ${open ? 'visible' : 'hidden'};
-  `}
-  align-items: center;
-  background: green;
-  background-color: rgba(0, 0, 0, 0.5);
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  transition: all 0.2s ease-in-out;
-  width: auto;
-  z-index: 10;
+    max-height: 0;
+    overflow: hidden;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    transition: max-height 0.1s ease-in;
+    width: 100%;
+
+    &.open {
+      max-height: 900px;
+      transition: max-height 0.1s ease-out;
+    }
 `;
 
 export const Buttons = styled.div`
@@ -60,9 +55,9 @@ export const Wrapper = styled.div`
     border-radius: 5px;
     padding: 30px;
     background-color: ${({ theme }) => theme.colors.white};
-    width: 550px;
+    width: 100%;
+    max-width: 1140px;
     @media (max-width: ${theme.breakpoints.sm}) {
-      width: calc(100% - 30px);
       padding: 20px;
     }
   `};
@@ -71,8 +66,11 @@ export const Wrapper = styled.div`
 export const WrapperInfoDialog = styled.div`
   ${({ theme }) => theme && css`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
+    @media (max-width: ${theme.breakpoints.lg}) {
+      grid-template-columns: 1fr 1fr;
+    }
     @media (max-width: ${theme.breakpoints.sm}) {
       grid-template-columns: 1fr;
     }

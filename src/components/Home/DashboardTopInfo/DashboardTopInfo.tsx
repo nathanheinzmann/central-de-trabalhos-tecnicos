@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Filter } from '..';
 import * as S from './DashboardTopInfo.style';
@@ -7,11 +7,17 @@ import { AppState } from '@src/store/store.types';
 import { inputsActions } from '@src/store/modules/inputs';
 import { InputsState, InputsTypes } from '@src/store/modules/inputs/inputs.types';
 import { Tag } from '@src/components/Home';
+import { Modal } from '@src/components/Home';
 
 const DashboardTopInfo = ({ content, selectOptions }: DashboardTopInfoProps) => {
   const { title, placeholder, filter } = content;
   const inputs: InputsState = useSelector(({ inputs }: AppState) => inputs);
   const tags = inputs && Object.keys(inputs).map((input) => ({ type: input as InputsTypes, value: inputs[input as InputsTypes] }));
+  const [open, setOpen] = useState(false);
+
+  const handleClickFilter = () => {
+    setOpen(!open);
+  };
 
   const dispatch = useDispatch();
   const isValidTag = (value: string, type: string) => type !== 'title' && value.length > 0 && value !== "TODOS" && value && value !== `${1995},${new Date().getFullYear()}`;
@@ -31,8 +37,13 @@ const DashboardTopInfo = ({ content, selectOptions }: DashboardTopInfoProps) => 
           placeholder={placeholder}
           value={inputs.title}
         />
-        <Filter content={filter} selectOptions={selectOptions} />
+        <Filter handleClickFilter={handleClickFilter} content={filter} />
       </S.Form>
+      <Modal
+        open={open}
+        selectOptions={selectOptions}
+        setOpen={setOpen}
+      />
       <S.Tags>
         {tags && mapTags}
       </S.Tags>

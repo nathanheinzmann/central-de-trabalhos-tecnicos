@@ -37,11 +37,11 @@ export const Form = styled.div`
     background-color: ${theme.colors.white};
     border-radius: 5px;
     display: flex;
-    margin-top: 40px;
+    margin: 40px 0 24px;
     width: 100%;
     
     @media (max-width: ${theme.breakpoints.lg}) {
-      margin-top: 30px;
+      margin: 30px 0 16px;
     }
   `}
 `;
