@@ -21,8 +21,6 @@ const getFilterOptions = async () => {
     }
   ]
 
-  console.log(apiOptions)
-
   const concatOptions = apiOptions.map(({ type, options }) => ({ type, options: ['TODOS'].concat(options) }));
   const selectOptions = concatOptions.map(({ type, options }) => ({ type, options: [...new Set(options)] }));
 
