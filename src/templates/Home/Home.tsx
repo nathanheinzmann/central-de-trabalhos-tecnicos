@@ -19,7 +19,6 @@ const Home = ({ articles, homeContent, selectOptions }: any) => {
   useEffect(() => {
     fuseSearch({ articles, setAllArticles, inputs });
     let show = hasFilter(inputs);
-    console.log(show)
     setShowResponse(show);
   }, [articles, inputs]);
 

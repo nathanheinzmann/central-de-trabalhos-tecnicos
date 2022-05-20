@@ -7,7 +7,7 @@ type ApiType = {
 }[];
 
 const getFilterOptions = async () => {
-  const data = await fetch('https://ctt-next-ts.tk/wp-json/wp/v2/academic-works?_fields=acf');
+  const data = await fetch('https://ctt-next-ts.tk/wp-json/wp/v2/academic-works?_fields=acf&per_page=100');
   const json: ApiType = await data.json();
 
   const apiOptions = [
@@ -20,6 +20,8 @@ const getFilterOptions = async () => {
       options: json.map(({ acf }) => acf.type)
     }
   ]
+
+  console.log(apiOptions)
 
   const concatOptions = apiOptions.map(({ type, options }) => ({ type, options: ['TODOS'].concat(options) }));
   const selectOptions = concatOptions.map(({ type, options }) => ({ type, options: [...new Set(options)] }));

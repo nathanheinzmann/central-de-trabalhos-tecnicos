@@ -40,7 +40,6 @@ const Select = ({
 
   const onOptionClick = useCallback(
     (option: string) => {
-      // Prevent updates when option is the current selection
       if (selected?.value === option) {
         setIsOpen(false);
         return;
